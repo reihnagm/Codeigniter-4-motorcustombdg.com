@@ -2,7 +2,7 @@
 
 <?= view('layouts/header'); ?>
 
-<?= view('layouts/products'); ?>
+<?= view('layouts/account'); ?>
 
 <?= view('layouts/footer'); ?>
 

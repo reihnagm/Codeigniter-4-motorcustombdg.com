@@ -1,0 +1,297 @@
+CRITICAL - 2022-06-21 06:39:41 --> syntax error, unexpected '}'
+in APPPATH/Config/Routes.php on line 43.
+ 1 SYSTEMPATH/CodeIgniter.php(415): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 2 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 3 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 06:40:07 --> syntax error, unexpected '}'
+in APPPATH/Config/Routes.php on line 43.
+ 1 SYSTEMPATH/CodeIgniter.php(415): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 2 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 3 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 06:40:49 --> syntax error, unexpected '}'
+in APPPATH/Config/Routes.php on line 43.
+ 1 SYSTEMPATH/CodeIgniter.php(415): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 2 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 3 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 06:53:42 --> Argument 1 passed to CodeIgniter\Database\BaseConnection::simpleQuery() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/AuthController.php on line 56
+in SYSTEMPATH/Database/BaseConnection.php on line 689.
+ 1 APPPATH/Controllers/AuthController.php(56): CodeIgniter\Database\BaseConnection->simpleQuery(null)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 06:54:27 --> Argument 1 passed to CodeIgniter\Database\BaseConnection::simpleQuery() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/AuthController.php on line 56
+in SYSTEMPATH/Database/BaseConnection.php on line 689.
+ 1 APPPATH/Controllers/AuthController.php(56): CodeIgniter\Database\BaseConnection->simpleQuery(null)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 06:57:24 --> Argument 1 passed to CodeIgniter\Database\BaseConnection::simpleQuery() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/AuthController.php on line 57
+in SYSTEMPATH/Database/BaseConnection.php on line 689.
+ 1 APPPATH/Controllers/AuthController.php(57): CodeIgniter\Database\BaseConnection->simpleQuery(null)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 06:59:56 --> Argument 1 passed to CodeIgniter\Database\BaseConnection::simpleQuery() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/AuthController.php on line 57
+in SYSTEMPATH/Database/BaseConnection.php on line 689.
+ 1 APPPATH/Controllers/AuthController.php(57): CodeIgniter\Database\BaseConnection->simpleQuery(null)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:05:25 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:05:25 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'49959b9e-ae3c-4123-81fc-634e2568f525\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$gRTc8Yy/fd09OS5aolIcNO/pKJMuyHHqOlkfyxIDMiIDcisZycsDq\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:06:08 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:06:08 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'fe6dc4ea-5d26-4441-b0fb-ebb1421de62e\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$tksScxEulqIzgVweKmRRPeoaL2RTrLEPPT4hD3f8Tjn2hKMEZmdxu\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:08:31 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:08:31 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'1e72bbc8-f086-4e65-9636-0cd5808e74c5\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$9OG99FLpxhQ6KVRGX7mQyOAPRIz/LAItEVUG/67JqPdfaBgNAaNf.\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:09:30 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:09:30 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'6a26b96c-affe-4130-9e5a-12f2a9089012\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$3xdiGnlCg/z5u1pZ8Vj1weAEB0.MYwVakLXe5Yzb0xM77m1KNKRAO\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:10:34 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:10:34 --> Some message goes here
+in APPPATH/Controllers/AuthController.php on line 77.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:11:27 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:11:27 --> Call to a member function getMessage() on null
+in APPPATH/Controllers/AuthController.php on line 77.
+ 1 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 2 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 3 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 07:12:04 --> syntax error, unexpected 'try' (T_TRY)
+in APPPATH/Controllers/AuthController.php on line 57.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/AuthController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AuthController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AuthController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\AuthController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\AuthController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 07:12:08 --> syntax error, unexpected ';', expecting ')'
+in APPPATH/Controllers/AuthController.php on line 56.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/AuthController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AuthController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AuthController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\AuthController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\AuthController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:12:28 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:12:28 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(56): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'53b2df70-8556-4488-8bfe-460c11fe495e\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$9MCW5FGjnHQgFeUesT03eucYttF/bJFxYxasehtizpS1ID6P1lZIS\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:13:01 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:13:01 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(56): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'e14475bd-8476-48ec-8802-ec0c8d81bab6\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$XVZCp5I8i3Wi07hNuOsP2eq8Ht.vH.TX/9dbGtz6dP4dfcOZCMQyi\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 07:16:03 --> syntax error, unexpected '(', expecting '|' or variable (T_VARIABLE)
+in APPPATH/Controllers/AuthController.php on line 78.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/AuthController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AuthController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AuthController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\AuthController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\AuthController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:17:15 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:17:15 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'a9959e7e-28cf-4db8-81bb-9ce18d75c9b0\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$5ZWUX18OXZ5V5YyLgSSdz.lFzPP/4155hykQrzBC/L5.SeortimIC\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:19:02 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:19:02 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(692): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO users (uid, username, email, password) VALUES(\'6bc99e41-a617-43f5-96e4-e47501091218\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$cBNTWHw3pI/R3eUn2a9jlueRr5Ti84SmJgkkLLB1AI6Ww55ZVZp/a\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 07:22:13 --> syntax error, unexpected ';', expecting ')'
+in APPPATH/Controllers/AuthController.php on line 58.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/AuthController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AuthController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AuthController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\AuthController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\AuthController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 07:22:20 --> syntax error, unexpected 'public' (T_PUBLIC)
+in APPPATH/Controllers/AuthController.php on line 80.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/AuthController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AuthController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AuthController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\AuthController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\AuthController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:22:57 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:22:57 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->query('INSERT INTO users (uid, username, email, password) VALUES(\'19134d8d-c298-45b0-9e9e-6cda3cbb5983\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$1MNQ58SYA1eIxkmR1ly3C.7N2XsjBUuOVcMjgNsRAnJL46HsO9Soi\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:24:58 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:24:58 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->query('INSERT INTO users (uid, username, email, password) VALUES(\'dfd8e917-7bf9-4c47-b8ea-d4da6317e8fb\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$DP/Dka3onJQCa2Hh.I8tYuLx47ppOWmyJyioSjFe45l17xmMksEb.\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:25:49 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:25:49 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->query('INSERT INTO users (uid, username, email, password) VALUES(\'5a8bcc7c-7e3d-4f77-80b0-fd29412ab9cf\', \'reihanagam\', \'reihanagam7@gmail.com\', \'$2y$12$joJKLNXJ1eKSI3UDjn8aHuZmdku3nFXkEQnAT/YScxo.oKYKbeLo2\')')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:30:42 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:30:42 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->query('SELECT * FROM users')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:32:33 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:32:33 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->query('SELECT * FROM users')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:33:23 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:33:23 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->query('SELECT * FROM users')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:35:05 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 07:35:05 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'motorcustombdg'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(58): CodeIgniter\Database\BaseConnection->query('SELECT * FROM users')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 07:40:01 --> Uncaught Error: Object of class CodeIgniter\Database\MySQLi\Connection could not be converted to string in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/AuthController.php:59
+Stack trace:
+#0 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+#1 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Applications/MAMP/htdocs/motorcustombdg.com/index.php(55): CodeIgniter\CodeIgniter->run()
+#4 {main}
+  thrown
+in APPPATH/Controllers/AuthController.php on line 59.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2022-06-21 07:40:27 --> Uncaught Error: Object of class CodeIgniter\Database\MySQLi\Connection could not be converted to string in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/AuthController.php:59
+Stack trace:
+#0 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+#1 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Applications/MAMP/htdocs/motorcustombdg.com/index.php(55): CodeIgniter\CodeIgniter->run()
+#4 {main}
+  thrown
+in APPPATH/Controllers/AuthController.php on line 59.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2022-06-21 07:40:38 --> Uncaught Error: Object of class CodeIgniter\Database\MySQLi\Connection could not be converted to string in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/AuthController.php:59
+Stack trace:
+#0 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+#1 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 /Applications/MAMP/htdocs/motorcustombdg.com/system/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Applications/MAMP/htdocs/motorcustombdg.com/index.php(55): CodeIgniter\CodeIgniter->run()
+#4 {main}
+  thrown
+in APPPATH/Controllers/AuthController.php on line 59.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2022-06-21 07:44:44 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2022-06-21 07:44:44 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(59): CodeIgniter\Database\BaseConnection->query('SELECT * FROM users')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
