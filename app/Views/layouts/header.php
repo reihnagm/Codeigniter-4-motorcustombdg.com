@@ -23,6 +23,9 @@
                         <li><a href="javascript:void(0)">CONTACT US</a></li>
                         <li><a href="javascript:void(0)">OUR LOCATION</a></li>
                         <li><a href="javascript:void(0)">ABOUT US</a></li>
+                        <?php if($session->get("role") === "admin") { ?>
+                            <li><a href="<?= base_url() ?>/admin">ADMIN</a></li>
+                        <?php } ?>
                         <li>
                             <?php if(!empty($session->get("authenticated"))) { ?>
                                 <a id="logout-btn" href="javascript:void(0)">LOGOUT</a>
@@ -33,7 +36,7 @@
                     </ul>
                 </nav>
             </div>
-            <?php if($segment != "auth") { ?>
+            <?php if(uri_string() != "/auth") { ?>
                 <?= view('layouts/banner') ?>
             <?php } else { ?> <?php } ?> 
         </div>

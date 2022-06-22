@@ -21,14 +21,16 @@ class AuthController extends BaseController {
         $email = $body->email;
         $password = $body->password;
 
-        $query = "SELECT username, password FROM users WHERE email = '$email'";
+        $query = "SELECT ur.name role, a.uid, a.username, a.password FROM users a INNER JOIN user_roles ur 
+        ON a.user_role_id = ur.id 
+        WHERE email = '$email'";
 
         try {
             $result = $db->query($query);
 
-            $passwordDb = $result->getResult();
+            $data = $result->getResult();
 
-            if(empty($passwordDb)) {
+            if(empty($data)) {
                 $data["error"] = true;
                 $data["code"] = 500;
                 $data["message"] = "Account is not exist!";
@@ -38,13 +40,15 @@ class AuthController extends BaseController {
                     "message" => $data["message"]
                 ], 500);
             } else {    
-                $exist = password_verify($password, $passwordDb[0]->password);
+                $exist = password_verify($password, $data[0]->password);
                 if($exist) {
                     $data["error"] = false;
                     $data["code"] = 200;
                     $data["message"] = "Successfully Login!";
                     $session->set([
-                        "username" => $passwordDb[0]->username,
+                        "useruid" => $data[0]->uid,
+                        "username" => $data[0]->username,
+                        "role" => $data[0]->role,
                         "email" => $email,
                         "authenticated" => true
                     ]);
@@ -126,8 +130,10 @@ class AuthController extends BaseController {
 
     public function logout() {
         $session = Services::session();
+        $session->remove('useruid');
         $session->remove('username');
         $session->remove('email');
+        $session->remove('role');
         $session->remove('authenticated');
         return redirect()->to(base_url());
     }

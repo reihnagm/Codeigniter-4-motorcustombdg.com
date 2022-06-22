@@ -514,6 +514,10 @@ form a{
     justify-content: space-around !important;
 }
 
+.justify-content-center {
+    justify-content: center;
+}
+
 .gap-8 {
     gap: 6rem !important;
 }
@@ -532,4 +536,54 @@ form a{
 
 .flex-row {
     flex-direction: row !important;
+}
+
+.center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-load-more{
+    display: inline-block;
+    background: #ff523b;
+    color: white;
+    padding: 8px 30px;
+    margin: 50px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+.btn-load-more:hover{
+    cursor: pointer;
+    background: #563434;
+}
+
+.f-24 {
+    font-size: 13px;
+}
+
+.py-5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+} 
+
+.py-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+} 
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+.badge-secondary {
+    color: #fff;
+    background-color: #6c757d;
 }

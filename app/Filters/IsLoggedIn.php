@@ -10,9 +10,9 @@ class isLoggedIn implements FilterInterface
 {
   public function before(RequestInterface $request,  $arguments = null)
   {
-    if (!session('authenticated')) {
-      return redirect()->to(base_url());
-    }
+    // if (!session('authenticated')) {
+    //   return redirect()->to(base_url());
+    // }
   }
 
   public function after(RequestInterface $request, ResponseInterface $response,  $arguments = null)

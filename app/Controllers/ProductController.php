@@ -29,7 +29,8 @@ class ProductController extends BaseController {
             $perPage = ceil($resultTotal / $limit);
             $prevPage = $page === 1 ? 1 : $page - 1;
             $nextPage = $page === $perPage ? 1 : $page + 1;
-            $queryProducts = $db->query("SELECT * FROM products LIMIT $offset, $limit");
+            $queryProducts = $db->query("SELECT a.*, u.username FROM products a INNER JOIN users u 
+            ON u.uid = a.user_uid LIMIT $offset, $limit");
             $products = $queryProducts->getResult();
             
             return $this->respond([
