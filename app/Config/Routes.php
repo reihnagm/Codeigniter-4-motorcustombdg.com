@@ -39,10 +39,13 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->group('auth', function($routes) {
     $routes->get('/', 'AuthController::index', ['namespace' => 'App\Controllers']);
+    $routes->get('logout', 'AuthController::logout', ['namespace' => 'App\Controllers']);
+    $routes->post('post-login', 'AuthController::postLogin', ['namespace' => 'App\Controllers']);
     $routes->post('post-register', 'AuthController::postRegister', ['namespace' => 'App\Controllers']);
 });
 $routes->group('products', function($routes) {
     $routes->get('/', 'ProductController::index', ['namespace' => 'App\Controllers']);
+    $routes->get('init-products', 'ProductController::initProducts', ['namespace' => 'App\Controllers']);
 });
 
 /*

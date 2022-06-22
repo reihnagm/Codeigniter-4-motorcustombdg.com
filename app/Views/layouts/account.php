@@ -13,9 +13,9 @@
                         <hr id="Indicator">
                     </div>
                     <form id="LoginForm">
-                        <input type="text" placeholder="Username">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn">Login</button>
+                        <input id="email" type="email" placeholder="Email">
+                        <input id="password" type="password" placeholder="Password">
+                        <button id="post-login-btn" type="submit" class="btn">Login</button>
                         <a href="">Forget Password</a>
                     </form>
 

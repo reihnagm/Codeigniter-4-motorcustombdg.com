@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
-use Config\Services;
 use Config\Database;
+use Config\Services;
 
 use App\Controllers\Base\BaseController;
 
@@ -12,35 +12,72 @@ class AuthController extends BaseController {
     use ResponseTrait;
 
     public function postLogin() {
+        $db = Database::connect();
         $req = Services::request();
+        $session = Services::session();
         
         $body = json_decode($req->getBody());
-
-        $username = $body->username;
+        
         $email = $body->email;
         $password = $body->password;
 
-        $data["error"] = null;
+        $query = "SELECT username, password FROM users WHERE email = '$email'";
 
-        $query = `INSERT INTO users (username, email, password) VALUES('$username', '$email', '$password')`;
-        $db = db_connect();
-        $db->query($query);
-        if (! $db->simpleQuery('SELECT `example_field` FROM `example_table`')) {
-            $data["error"] = $db->error(); 
+        try {
+            $result = $db->query($query);
+
+            $passwordDb = $result->getResult();
+
+            if(empty($passwordDb)) {
+                $data["error"] = true;
+                $data["code"] = 500;
+                $data["message"] = "Account is not exist!";
+                return $this->respond([
+                    "error" => $data["error"],
+                    "code" => $data["code"],
+                    "message" => $data["message"]
+                ], 500);
+            } else {    
+                $exist = password_verify($password, $passwordDb[0]->password);
+                if($exist) {
+                    $data["error"] = false;
+                    $data["code"] = 200;
+                    $data["message"] = "Successfully Login!";
+                    $session->set([
+                        "username" => $passwordDb[0]->username,
+                        "email" => $email,
+                        "authenticated" => true
+                    ]);
+                    return $this->respond([
+                        "error" => $data["error"],
+                        "code" => $data["code"],
+                        "message" => $data["message"]
+                    ], 200);
+                } else {
+                    $data["error"] = true;
+                    $data["code"] = 500;
+                    $data["message"] = "Account is not match!";
+                    return $this->respond([
+                        "error" => $data["error"],
+                        "code" => $data["code"],
+                        "message" => $data["message"]
+                    ], 500);
+                }
+            }
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+            ], 500);
         }
-        $data["code"] = 200;
-        $data["message"] = "Succesfully Login";
-        $this->respond([
-            "error" => $data["error"],
-            "code" => $data["code"],
-            "message" => $data["message"],
-        ], 200);
     }
 
     public function postRegister() {
         $db = Database::connect();
         $req = Services::request();
-
+        $session = Services::session();
+        
         $body = json_decode($req->getBody());
 
         $uid = uuidv4();
@@ -51,43 +88,49 @@ class AuthController extends BaseController {
         $options = ['cost' => 12]; 
         $password = password_hash($passwordBody, PASSWORD_BCRYPT, $options);
 
-        $data["error"] = null;
-
         $query = "INSERT INTO users (uid, username, email, password) VALUES('$uid', '$username', '$email', '$password')";
-        
-        if($db) {
-            $db->query("SELECT * FROM users");
-        } else {
-            die("disconnect");
+
+        try {
+            if (!$db->simpleQuery($query)) {
+                $data["error"] = true;
+                $data["code"] = 500;
+                $data["message"] = $db->error();
+                return $this->respond([
+                    "error" => $data["error"],
+                    "code" => $data["code"],
+                    "message" => $data["message"],
+                ], 500);
+            } else {
+                $data["error"] = false;
+                $data["code"] = 200;
+                $data["message"] = "Succesfully Register";
+                $session->set([
+                    "username" => $username,
+                    "email" => $email,
+                    "authenticated" => true
+                ]);
+                return $this->respond([
+                    "error" => $data["error"],
+                    "code" => $data["code"],
+                    "message" => $data["message"],
+                ], 200);
+            }
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+            ], 500);
         }
-        // try {
-        //     die(var_dump($db->query('SELECT * FROM users')));
-        // } catch(\Exception $e) {
-        //     $this->respond([
-        //         "error" => "",
-        //         "code" => "",
-        //         "message" => "",
-        //     ], 500);
-        // }
-        // if(!$db->simpleQuery($query)) {
-        //     $data["error"] = "ups";
-        //     $data["code"] = 500;
-        //     $data["message"] = "Failed Register";
-        //     $this->respond([
-        //         "error" => $data["error"],
-        //         "code" => $data["code"],
-        //         "message" => $data["message"],
-        //     ], 500);
-        // } else {
-        //     $data["code"] = 200;
-        //     $data["message"] = "Succesfully Register";
-        //     $this->respond([
-        //         "error" => $data["error"],
-        //         "code" => $data["code"],
-        //         "message" => $data["message"],
-        //     ], 200);
-        // }
-    }   
+    }
+
+    public function logout() {
+        $session = Services::session();
+        $session->remove('username');
+        $session->remove('email');
+        $session->remove('authenticated');
+        return redirect()->to(base_url());
+    }
 
     public function index() { 
         return view("auth/index");

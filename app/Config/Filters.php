@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\IsLoggedIn;
 use App\Filters\Cors;
 
 use CodeIgniter\Config\BaseConfig;
@@ -20,6 +21,7 @@ class Filters extends BaseConfig
      * @var array
      */
     public $aliases = [
+        'isLoggedIn'    => IsLoggedIn::class,
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
@@ -72,5 +74,14 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+		'isLoggedIn' => [
+			'before' => [
+				'/',
+			],
+			'after'  => [
+				'/auth'
+			]
+		],
+	];
 }

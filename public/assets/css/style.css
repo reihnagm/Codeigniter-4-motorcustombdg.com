@@ -92,6 +92,7 @@ p{
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
+    padding-bottom: 30px;
     padding-right: 25px;
 }
 .col-4{
@@ -498,4 +499,37 @@ form a{
     .cart-info p{
         display: none;
     }
+}
+
+.box-product:hover{
+    transform: translateY(-5px);
+}
+
+.box-product {
+    width: 180px;
+    transition: transform 0.5s;
+}
+
+.justify-content-around {
+    justify-content: space-around !important;
+}
+
+.gap-8 {
+    gap: 6rem !important;
+}
+
+.overflow-setting {
+    overflow: hidden;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.flex-row {
+    flex-direction: row !important;
 }

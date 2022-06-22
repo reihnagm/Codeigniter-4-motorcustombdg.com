@@ -21,3 +21,7 @@ function uuidv4() {
         mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
     );
 }
+
+function ddd($data) {
+    return die(var_dump($data));
+}

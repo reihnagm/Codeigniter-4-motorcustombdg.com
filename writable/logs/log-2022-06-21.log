@@ -295,3 +295,153 @@ in SYSTEMPATH/Database/BaseConnection.php on line 416.
  4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
  5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:48:44 --> Error connecting to the database: Unknown database 's'
+CRITICAL - 2022-06-21 07:48:44 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 's'
+in SYSTEMPATH/Database/BaseConnection.php on line 416.
+ 1 SYSTEMPATH/Database/BaseConnection.php(586): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Controllers/AuthController.php(59): CodeIgniter\Database\BaseConnection->query('SELECT * FROM users')
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postRegister()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 07:53:07 --> syntax error, unexpected 'public' (T_PUBLIC)
+in APPPATH/Controllers/AuthController.php on line 84.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/AuthController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AuthController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AuthController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\AuthController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\AuthController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-21 07:53:36 --> Error connecting to the database: Unknown database 's'
+ERROR - 2022-06-21 07:56:09 --> Error connecting to the database: Unknown database 's'
+ERROR - 2022-06-21 07:57:55 --> Error connecting to the database: Unknown database 's'
+ERROR - 2022-06-21 07:58:37 --> Error connecting to the database: Unknown database 's'
+ERROR - 2022-06-21 08:12:26 --> Error connecting to the database: Unknown database 's'
+ERROR - 2022-06-21 08:12:57 --> Error connecting to the database: Unknown database 's'
+ERROR - 2022-06-21 08:15:09 --> Error connecting to the database: Unknown database 'motorcustombdg'
+ERROR - 2022-06-21 08:16:26 --> Error connecting to the database: Unknown database 'motorcustombdg'
+CRITICAL - 2022-06-21 08:30:29 --> syntax error, unexpected '{'
+in APPPATH/Views/layouts/header.php on line 27.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('layouts/header', [], true)
+ 3 APPPATH/Views/home/index.php(3): view('layouts/header')
+ 4 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/home/index.php')
+ 5 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('home/index', [], true)
+ 7 APPPATH/Controllers/Home.php(11): view('home/index')
+ 8 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Home->index()
+ 9 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 08:53:25 --> Cannot redeclare dd() (previously declared in /Applications/MAMP/htdocs/motorcustombdg.com/system/Common.php:356)
+in APPPATH/Helpers/utils_helper.php on line 25.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2022-06-21 08:56:56 --> Undefined property: stdClass::$password
+in APPPATH/Controllers/AuthController.php on line 22.
+ 1 APPPATH/Controllers/AuthController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$password', 'APPPATH/Controllers/AuthController.php', 22, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 08:57:42 --> Undefined property: stdClass::$password
+in APPPATH/Controllers/AuthController.php on line 22.
+ 1 APPPATH/Controllers/AuthController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$password', 'APPPATH/Controllers/AuthController.php', 22, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 08:58:51 --> Undefined property: stdClass::$password
+in APPPATH/Controllers/AuthController.php on line 22.
+ 1 APPPATH/Controllers/AuthController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$password', 'APPPATH/Controllers/AuthController.php', 22, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 08:59:53 --> Undefined property: stdClass::$password
+in APPPATH/Controllers/AuthController.php on line 22.
+ 1 APPPATH/Controllers/AuthController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$password', 'APPPATH/Controllers/AuthController.php', 22, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 09:01:30 --> Undefined property: stdClass::$password
+in APPPATH/Controllers/AuthController.php on line 22.
+ 1 APPPATH/Controllers/AuthController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$password', 'APPPATH/Controllers/AuthController.php', 22, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 09:03:01 --> Undefined property: stdClass::$password
+in APPPATH/Controllers/AuthController.php on line 22.
+ 1 APPPATH/Controllers/AuthController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: stdClass::$password', 'APPPATH/Controllers/AuthController.php', 22, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 09:03:48 --> password_verify() expects parameter 2 to be string, array given
+in APPPATH/Controllers/AuthController.php on line 30.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'password_verify() expects parameter 2 to be string, array given', 'APPPATH/Controllers/AuthController.php', 30, [...])
+ 2 APPPATH/Controllers/AuthController.php(30): password_verify('12345678', [...])
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 11:14:14 --> syntax error, unexpected ':'
+in APPPATH/Controllers/ProductController.php on line 23.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/ProductController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\ProductController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\ProductController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 11:25:11 --> Use of undefined constant resultTotal - assumed 'resultTotal' (this will throw an Error in a future version of PHP)
+in APPPATH/Controllers/ProductController.php on line 28.
+ 1 APPPATH/Controllers/ProductController.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant resultTotal - assumed \'resultTotal\' (this will throw an Error in a future version of PHP)', 'APPPATH/Controllers/ProductController.php', 28, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 11:31:55 --> syntax error, unexpected ':', expecting ']'
+in APPPATH/Controllers/ProductController.php on line 35.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/ProductController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\ProductController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\ProductController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 11:57:57 --> Use of undefined constant this - assumed 'this' (this will throw an Error in a future version of PHP)
+in APPPATH/Views/layouts/script.php on line 229.
+ 1 APPPATH/Views/layouts/script.php(229): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefined constant this - assumed \'this\' (this will throw an Error in a future version of PHP)', 'APPPATH/Views/layouts/script.php', 229, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/layouts/script.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('layouts/script', [], true)
+ 5 APPPATH/Views/home/index.php(9): view('layouts/script')
+ 6 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/home/index.php')
+ 7 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('home/index', [], true)
+ 9 APPPATH/Controllers/Home.php(11): view('home/index')
+10 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Home->index()
+11 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 19:26:14 --> Undefined offset: 0
+in APPPATH/Controllers/AuthController.php on line 29.
+ 1 APPPATH/Controllers/AuthController.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'APPPATH/Controllers/AuthController.php', 29, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-21 19:37:35 --> Undefined variable: username
+in APPPATH/Controllers/AuthController.php on line 47.
+ 1 APPPATH/Controllers/AuthController.php(47): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: username', 'APPPATH/Controllers/AuthController.php', 47, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\AuthController->postLogin()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
