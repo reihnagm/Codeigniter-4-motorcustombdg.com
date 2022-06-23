@@ -108,27 +108,40 @@
 
             $(document).on("change", "#file-img", function() {
                 var fd = new FormData()
-                var files = $(this)[0].files
-                fd.append('filesCount', files.length)
-                for (var i = 0; i < files.length; i++) {
-                    $("#file-img-label").text(files[i].name)
-                    var output = document.getElementById('output-file-img');
-                        output.src = URL.createObjectURL(files[i]);
-                        output.onload = function() {
-                            URL.revokeObjectURL(output.src) 
+                var input = $(this)[0]
+                var container = $('.box-preview-images').html('')
+                var filename = ""
+                var i = 0
+                if(input.files && input.files[0]) {
+                    if (parseInt(input.files.length) > 5){
+                        alert("You can only upload a maximum of 5 files");
+                    } else {
+                        for (var f of input.files) {
+                            i++
+                            filename += `${f.name}, `
+                            var reader = new FileReader()
+                            reader.onload = function (e) {
+                                var n = container.children().length
+                                container.append(
+                                    `<div class="preview-image-item ${n}" style="margin: 20px ${n == 0 ? '0' : '8px'}">
+                                        <img src="${e.target.result}" width="130">
+                                    </div>`
+                                )
+                            }
+                            reader.readAsDataURL(f)
+                            fd.append(`file-${i}`, f)
                         }
-                    fd.append(`file-${i}`, files[i])
-                }
-                $.ajax({
-                    url: `<?= base_url() ?>/admin/products/upload`,
-                    type: 'POST',
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    success: function(response){
-                        var data = response.data
-                    },
-                });
+                        $("#file-img-label").text(filename)
+                    }
+                }  
+                
+                // reader.readAsDataURL(file)
+
+                // var output = document.getElementById('output-file-img');
+                // output.src = URL.createObjectURL(file);
+                // output.onload = function() {
+                //     URL.revokeObjectURL(output.src) 
+                // }
             })
 
             $(document).on("click", "#btn-create-a-product", function(e) {

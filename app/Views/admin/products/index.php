@@ -25,14 +25,14 @@
               <textarea class="form-control" id="description"></textarea>
             </div>
             <div class="form-group">
-              <label for="exampleInputFile">Image:</label>
+              <label for="exampleInputFile">Max upload 5 ( Images ):</label>
               <div class="input-group">
                 <div class="custom-file">
-                  <input type="file"  accept="image/*" name="file" class="custom-file-input" id="file-img">
+                  <input type="file"  accept="image/*"  name="file" class="custom-file-input" id="file-img" multiple>
                   <label class="custom-file-label" id="file-img-label" for="file-img">Choose file</label>
                 </div>
               </div>
-              <img id="output-file-img" class="img-thumbnail mb-2 mt-2"/>
+              <div class="d-flex box-preview-images" style="overflow-x: scroll;"> </div>
             </div>
           </form>
         </div>
