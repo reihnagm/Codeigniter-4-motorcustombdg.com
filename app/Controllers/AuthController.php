@@ -33,7 +33,7 @@ class AuthController extends BaseController {
             if(empty($data)) {
                 $data["error"] = true;
                 $data["code"] = 500;
-                $data["message"] = "Account is not exist!";
+                $data["message"] = "Account does't exist!";
                 return $this->respond([
                     "error" => $data["error"],
                     "code" => $data["code"],
@@ -60,7 +60,7 @@ class AuthController extends BaseController {
                 } else {
                     $data["error"] = true;
                     $data["code"] = 500;
-                    $data["message"] = "Account is not match!";
+                    $data["message"] = "Account does't match!";
                     return $this->respond([
                         "error" => $data["error"],
                         "code" => $data["code"],
@@ -109,9 +109,11 @@ class AuthController extends BaseController {
                 $data["code"] = 200;
                 $data["message"] = "Succesfully Register";
                 $session->set([
+                    "useruid" => $uid,
                     "username" => $username,
+                    "role" => "user",
                     "email" => $email,
-                    "authenticated" => true
+                    "authenticated" => true,
                 ]);
                 return $this->respond([
                     "error" => $data["error"],

@@ -6,7 +6,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class isLoggedIn implements FilterInterface
+class isAdmin implements FilterInterface
 {
   public function before(RequestInterface $request,  $arguments = null)
   {
@@ -15,7 +15,7 @@ class isLoggedIn implements FilterInterface
 
   public function after(RequestInterface $request, ResponseInterface $response,  $arguments = null)
   {
-    if (session('authenticated')) {
+    if (session('authenticated') && session('role') != 'admin') {
       return redirect()->to(base_url());
     }
   }

@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\IsLoggedIn;
+use App\Filters\IsAdmin;
 use App\Filters\Cors;
 
 use CodeIgniter\Config\BaseConfig;
@@ -21,6 +22,7 @@ class Filters extends BaseConfig
      * @var array
      */
     public $aliases = [
+        'isAdmin'       => IsAdmin::class,
         'isLoggedIn'    => IsLoggedIn::class,
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
@@ -81,6 +83,15 @@ class Filters extends BaseConfig
 			],
 			'after'  => [
 				'/auth'
+			]
+		],
+        'isAdmin' => [
+			'before' => [
+				'/',
+			],
+			'after'  => [
+				'/auth',
+                '/admin'
 			]
 		],
 	];

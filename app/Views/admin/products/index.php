@@ -47,7 +47,7 @@
   <div class="wrapper">
 
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" src="<?= base_url() ?>/public/assets/admin/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -107,6 +107,10 @@
                         <th>No</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>Img</th>
+                        <th>Upload by</th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>

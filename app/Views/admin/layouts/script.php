@@ -1,4 +1,65 @@
 <script>
+    
+    function deleteProduct(uid) {
+        Swal.fire({
+            icon: 'info',
+            title: `<h6>Hapus produk?</h6>`,
+            text: '',
+            showCloseButton: true,
+            showCancelButton: true,
+            reverseButtons: true,
+            showConfirmButton: true,
+            backdrop: 'swal2-backdrop-hide', 
+            preConfirm: (_) => {
+                return fetch(`<?= base_url() ?>/admin/products/${uid}/delete`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                }).then(async (response) => {
+                    var data = await response.json()
+                    if(data.code != 200) {
+                        Swal.fire({
+                            icon: '',
+                            title: `<h6>There was problem\n\n(${data.message})</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload()
+                            }
+                        })
+                        return;
+                    } else {
+                        Swal.fire({
+                            icon: '',
+                            title: `<h6>${data.message}</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload()
+                            }
+                        })
+                    }
+                }).catch((_) => {
+                    Swal.fire({
+                        icon: '',
+                        title: `<h6>There was problem</h6>`,
+                        text: '',
+                        showConfirmButton: true,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload()
+                        }
+                    })
+                })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        })
+    }
+
     (function ($) {
     'use strict';
         $(function () {
@@ -26,6 +87,22 @@
                     {
                         data: "description"
                     },
+                    {
+                        data: "img"
+                    },
+                    {
+                        data: "uploadby"
+                    },
+                    {
+                        data: "edit",
+                        searchable: false,
+                        orderable: false,
+                    }, 
+                    {
+                        data: "delete",
+                        searchable: false,
+                        orderable: false,
+                    }
                 ]
             })
 

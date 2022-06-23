@@ -13,15 +13,16 @@ class AdminController extends BaseController
     use ResponseTrait;
 
     public function index() {
-      return view('admin/index');
+        $db = Database::connect();
+        $queryAllProduct = $db->query("SELECT p.*, u.username FROM products p 
+        INNER JOIN users u ON u.uid = p.user_uid");
+        $productCount = (int) count($queryAllProduct->getResult());
+        $data["totalProduct"] = $productCount;
+        return view('admin/index', $data);
     }
 
     public function products() {
         return view('admin/products/index');
-    }
-
-    public function create() {
-        return view('admin/products/create');
     }
 
     public function productsUpload() {
@@ -45,6 +46,29 @@ class AdminController extends BaseController
         ], 200);
     }
 
+    public function productsDelete($uid) {
+        $db = Database::connect();
+        try {
+            $queryProducts = $db->query("SELECT * FROM products WHERE uid = '$uid'");
+            $products = $queryProducts->getResult();
+            if(file_exists(FCPATH . $products[0]->img)) {
+                unlink(FCPATH . $products[0]->img);
+            }
+            $db->simpleQuery("DELETE FROM products WHERE uid = '$uid'");
+            return $this->respond([
+                "error" => false,
+                "code" => 200,
+                "message" => "Successfully delete product",
+            ], 200);
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function store() {
         $db = Database::connect();
         $request = Services::request();
@@ -61,7 +85,7 @@ class AdminController extends BaseController
             $location = 'public/web/'.$filename;
             move_uploaded_file($_FILES["file-".$i]["tmp_name"], $location);
 
-            $img = base_url().'/public/web/'.$filename;
+            $img = '/public/web/'.$filename;
 
             $queryInsertProduct = "INSERT INTO products (uid, title, description, img, user_uid) 
             VALUES('$uid', '$title', '$description', '$img', '$useruid')";
@@ -99,6 +123,10 @@ class AdminController extends BaseController
 			0 => "no",
             1 => "title",
 			2 => "description",
+            3 => "img",
+            4 => "uploadby",
+            5 => "edit",
+            6 => "delete"
  		];
 
         $order = $columns[$request->getPost('order')[0]["column"]];
@@ -131,9 +159,14 @@ class AdminController extends BaseController
 
         $i = 1;
         foreach ($products as $key => $val) {
+            $image = base_url() . $val->img;
             $nestedData['no'] = $i++;
             $nestedData['title'] = $val->title;
-            $nestedData['description']  = $val->description;
+            $nestedData['description'] = $val->description;
+            $nestedData['img'] = "<img src=$image class='img-fluid'/>";
+            $nestedData['uploadby'] = $val->username;
+            $nestedData['edit'] = "<button type='button' class='btn btn-info'><i class='fa-solid fa-pen-to-square'></i></button>";
+            $nestedData['delete'] = "<button type='button' onclick=deleteProduct('$val->uid') class='btn btn-danger'><i class='fa-solid fa-trash'></i></button>";
             $data[] = $nestedData;
         }
 
