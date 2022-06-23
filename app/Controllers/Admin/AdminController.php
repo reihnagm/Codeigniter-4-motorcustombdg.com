@@ -94,21 +94,55 @@ class AdminController extends BaseController
     public function initDatatablesProducts() {
         $db = Database::connect();
         $request = Services::request();
-        $limit = $request->getPost("length");
-        $offset = $request->getPost("start");
-        $queryProducts = $db->query("SELECT * FROM products LIMIT $offset, $limit");
-        $products = $queryProducts->getResult();
-        $total = (int) count($products);
-        $data = [];
         
-        // foreach ($products as $key => $value) {
-        //     $nestedData['NO'] = $i++;
-        //     $nestedData['TITLE'] = $value->domain;
-        //     $nestedData['IMG'] = $value->group;
-        //     $nestedData['DESCRIPTION']  = $value->msisdn;
-        //     $nestedData['AUTHOR']  = $value->hit;
-        //     $data[] = $nestedData;
-        // }
+        $columns = [
+			0 => "no",
+            1 => "title",
+			2 => "description",
+ 		];
+
+        $order = $columns[$request->getPost('order')[0]["column"]];
+        $dir   = $request->getPost('order')[0]["dir"];
+
+        $limit  = $request->getPost("length");
+        $offset = $request->getPost("start");
+
+        $draw 	= $request->getPost("draw");
+		$search = $request->getPost("search")["value"];
+
+        $queryProducts = $db->query("SELECT p.*, u.username FROM products p 
+        INNER JOIN users u ON u.uid = p.user_uid 
+        ORDER BY p.title $dir LIMIT $offset, $limit");
+
+        if(!empty($search)) {
+            $queryProducts = $db->query("SELECT p.*, u.username FROM products p 
+            INNER JOIN users u ON u.uid = p.user_uid 
+            WHERE p.title LIKE '%$search%' LIMIT $offset, $limit");
+        } 
+
+        $queryTotalFilteredProducts = $db->query("SELECT p.*, u.username FROM products p 
+        INNER JOIN users u ON u.uid = p.user_uid");
+
+        $products = $queryProducts->getResult();
+        $productsFiltered = $queryTotalFilteredProducts->getResult();
+        $totalProducts = (int) count($products);
+        $totalFilteredProducts = (int) count($productsFiltered);
+        $data = [];
+
+        $i = 1;
+        foreach ($products as $key => $val) {
+            $nestedData['no'] = $i++;
+            $nestedData['title'] = $val->title;
+            $nestedData['description']  = $val->description;
+            $data[] = $nestedData;
+        }
+
+        echo json_encode([
+			"draw" => $draw,
+			"recordsTotal" => $totalProducts,
+			"recordsFiltered" => $totalFilteredProducts,
+			"data" => $data
+		]);
     }
 
     public function initTotalProducts() {

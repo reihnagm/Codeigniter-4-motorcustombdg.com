@@ -2,12 +2,32 @@
     (function ($) {
     'use strict';
         $(function () {
-            $("#example1").DataTable({
+
+            var table = $("#datatables-products").DataTable({
                 "responsive": true, 
-                "lengthChange": false, 
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)')
+                "processing": true,
+                "serverSide": true,
+                dom: 'Bfrtipl',
+                buttons:  ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                "ajax": {
+                    url: '<?= base_url() ?>/admin/products/init-datatables-products',
+                    dataType: "JSON",
+                    type: "POST"
+                },
+                columns: [
+                    {
+                        data: "no",
+                        searchable: false,
+                        orderable: false,
+                    },
+                    {
+                        data: "title"
+                    },
+                    {
+                        data: "description"
+                    },
+                ]
+            })
 
             $(document).on("change", "#file-img", function() {
                 var fd = new FormData()
@@ -53,8 +73,16 @@
                     data: fd,
                     contentType: false,
                     processData: false,
-                    success: function(response){
+                    success: function(data) {
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>${data.message}</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        })
+                        $(".bd-create-products-modal-lg").modal("toggle")
                         $("#btn-create-a-product").text("Submit")
+                        location.reload()
                     },
                 });
             })

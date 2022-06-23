@@ -43,6 +43,7 @@ $routes->group('admin', function($routes) {
     $routes->post('products/upload', 'AdminController::productsUpload', ['namespace' => 'App\Controllers\Admin']);
     $routes->post('products/store', 'AdminController::store', ['namespace' => 'App\Controllers\Admin']);
     $routes->get('create', 'AdminController::create', ['namespace' => 'App\Controllers\Admin']);
+    $routes->post('products/init-datatables-products', 'AdminController::initDatatablesProducts', ['namespace' => 'App\Controllers\Admin']);
     $routes->get('init-total-products', 'AdminController::initTotalProducts', ['namespace' => 'App\Controllers\Admin']);
 });
 $routes->group('auth', function($routes) {
