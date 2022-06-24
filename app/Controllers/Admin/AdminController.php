@@ -69,48 +69,80 @@ class AdminController extends BaseController
         }
     }
 
+    public function productsEdit($uid) {
+        $db = Database::connect();
+        try {
+            $queryProducts = $db->query("SELECT p.title, p.description, GROUP_CONCAT(prm.img) AS images FROM products p 
+            INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            WHERE p.uid = '$uid'
+            GROUP BY p.uid");
+            $products = $queryProducts->getResult();
+
+            $data = [];
+
+            foreach($products as $key => $val) {
+                $nestedData["title"] = $val->title;
+                $nestedData["description"] = $val->description;
+                $nestedData["images"] = explode(",", $val->images);
+                $data[] = $nestedData; 
+            }
+           
+            return $this->respond([
+                "error" => false,
+                "code" => 200,
+                "message" => "Successfully fetch edit product",
+                "data" => $data[0]
+            ], 200);
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function store() {
         $db = Database::connect();
         $request = Services::request();
         $session = Services::session();
 
-        $uid = uuidv4();
+        $productUid = uuidv4();
         $title = $request->getPost("title");
         $description = $request->getPost("description");
-        $filesCount = $request->getPost("filesCount");
+        $filesCount = (int) $request->getPost("filesCount");
         $useruid = $session->get("useruid");
 
-        for ($i = 0; $i < $filesCount; $i++) { 
+        $db->transStart();
+
+        $queryInsertProduct = "INSERT INTO products (uid, title, description, img, user_uid) 
+        VALUES('$productUid', '$title', '$description', '', '$useruid')";
+
+        for ($i = 0; $i < $filesCount; $i++) {  
             $filename = $_FILES["file-".$i]["name"];
             $location = 'public/web/'.$filename;
             move_uploaded_file($_FILES["file-".$i]["tmp_name"], $location);
+            $productUidImgs = uuidv4();
+            $queryInsertProductImgs = "INSERT INTO product_imgs (uid, img, product_uid) 
+            VALUES('$productUidImgs', '$location', '$productUid')";
+            $db->query($queryInsertProductImgs);
+        }       
+        
+        try {
+            $db->query($queryInsertProduct);
 
-            $img = '/public/web/'.$filename;
-
-            $queryInsertProduct = "INSERT INTO products (uid, title, description, img, user_uid) 
-            VALUES('$uid', '$title', '$description', '$img', '$useruid')";
-
-            try {
-                if($db->simpleQuery($queryInsertProduct)) {
-                    return $this->respond([
-                        "error" => false,
-                        "code" => 200,
-                        "message" => "Successfully create a product",
-                    ], 200);
-                } else {
-                    return $this->respond([
-                        "error" => false,
-                        "code" => 200,
-                        "message" => "Successfully create a product",
-                    ], 200);
-                }
-            } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
-                return $this->respond([
-                    "error" => true,
-                    "code" => 500,
-                    "message" => $e->getMessage(),
-                ], 500);
-            }
+            $db->transComplete();        
+            return $this->respond([
+                "error" => false,
+                "code" => 200,
+                "message" => "Successfully create a product",
+            ], 200);
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+            ], 500);
         }
     }
 
@@ -165,7 +197,7 @@ class AdminController extends BaseController
             $nestedData['description'] = $val->description;
             $nestedData['img'] = "<img src=$image class='img-fluid'/>";
             $nestedData['uploadby'] = $val->username;
-            $nestedData['edit'] = "<button type='button' class='btn btn-info'><i class='fa-solid fa-pen-to-square'></i></button>";
+            $nestedData['edit'] = "<button type='button' @click=editProduct('$val->uid') class='btn btn-info'><i class='fa-solid fa-pen-to-square'></i></button>";
             $nestedData['delete'] = "<button type='button' onclick=deleteProduct('$val->uid') class='btn btn-danger'><i class='fa-solid fa-trash'></i></button>";
             $data[] = $nestedData;
         }

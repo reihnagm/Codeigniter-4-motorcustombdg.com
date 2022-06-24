@@ -1,3 +1,8 @@
+<?php 
+    $baseUrl = base_url();
+?>
+
+
 <section class="small-container"
     x-data="productsInstance()" 
     x-init="getProducts()">
@@ -11,7 +16,7 @@
         <template x-for="product in products" :key="product.id">
             <div class="box-product">
                 <a href="javascript:void(0)">
-                    <img :src="product.img" width="180">
+                    <img :src="product.images.split(',')[0]" width="180">
                 </a>
                 <h3 class="py-5" x-text="product.title"></h3>
                 <p class="f-24 py-5" x-text="product.description"></p>

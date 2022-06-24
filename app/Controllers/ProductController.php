@@ -11,12 +11,6 @@ use App\Controllers\Base\BaseController;
 class ProductController extends BaseController {
     use ResponseTrait;
 
-    public function index() { 
-
-
-        die(var_dump("hello"));
-    }
-
     public function initProducts() {
         $db = Database::connect();
         $req = Services::request();
@@ -29,8 +23,11 @@ class ProductController extends BaseController {
             $perPage = ceil($resultTotal / $limit);
             $prevPage = $page === 1 ? 1 : $page - 1;
             $nextPage = $page === $perPage ? 1 : $page + 1;
-            $queryProducts = $db->query("SELECT a.*, u.username FROM products a INNER JOIN users u 
-            ON u.uid = a.user_uid LIMIT $offset, $limit");
+            $queryProducts = $db->query("SELECT p.*, u.username, GROUP_CONCAT(prm.img) AS images FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid
+            LIMIT $offset, $limit");
             $products = $queryProducts->getResult();
             
             return $this->respond([

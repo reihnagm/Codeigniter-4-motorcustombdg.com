@@ -18,19 +18,19 @@
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="<?= base_url() ?>">HOME</a></li>
-                        <li><a href="javascript:void(0)">OUR PRODUCT</a></li>
-                        <li><a href="javascript:void(0)">CONTACT US</a></li>
-                        <li><a href="javascript:void(0)">OUR LOCATION</a></li>
-                        <li><a href="javascript:void(0)">ABOUT US</a></li>
+                        <li><a href="<?= base_url() ?>" class="text-white">HOME</a></li>
+                        <li><a href="javascript:void(0)" class="text-white">OUR PRODUCT</a></li>
+                        <li><a href="javascript:void(0)" class="text-white">CONTACT US</a></li>
+                        <li><a href="javascript:void(0)" class="text-white">OUR LOCATION</a></li>
+                        <li><a href="javascript:void(0)" class="text-white">ABOUT US</a></li>
                         <?php if($session->get("role") === "admin") { ?>
-                            <li><a href="<?= base_url() ?>/admin">ADMIN</a></li>
+                            <li><a href="<?= base_url() ?>/admin"class="text-white">ADMIN</a></li>
                         <?php } ?>
                         <li>
                             <?php if(!empty($session->get("authenticated"))) { ?>
-                                <a id="logout-btn" href="javascript:void(0)">LOGOUT</a>
+                                <a id="logout-btn" href="javascript:void(0)" class="text-white">LOGOUT</a>
                             <?php } else { ?>
-                                <a href="<?= base_url() ?>/auth">ACCOUNT</a>
+                                <a href="<?= base_url() ?>/auth" class="text-white">ACCOUNT</a>
                             <?php } ?>
                         </li>
                     </ul>

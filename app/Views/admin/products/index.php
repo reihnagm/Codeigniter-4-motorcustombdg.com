@@ -5,6 +5,8 @@
 
 <?= view("admin/layouts/head") ?>
 
+  <!-- ADD PRODUCT  -->
+
   <div class="modal fade bd-create-products-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -33,6 +35,49 @@
                 </div>
               </div>
               <div class="d-flex box-preview-images" style="overflow-x: scroll;"> </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="btn-create-a-product" type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT PRODUCT  -->
+
+  <div class="modal fade bd-edit-products-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" 
+    aria-hidden="true" 
+    x-data="productsInstance()">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="title-edit" class="col-form-label">Title:</label>
+              <input type="text" class="form-control" id="title-edit">
+            </div>
+            <div class="form-group">
+              <label for="description-edit" class="col-form-label">Description:</label>
+              <textarea class="form-control" id="description-edit"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">Max upload 5 ( Images ):</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file"  accept="image/*"  name="file" class="custom-file-input" id="file-img" multiple>
+                  <label class="custom-file-label" id="file-img-label" for="file-img">Choose file</label>
+                </div>
+              </div>
+              <div class="d-flex box-preview-edited-images" style="overflow-x: scroll;"> </div>
             </div>
           </form>
         </div>
@@ -88,12 +133,10 @@
         </div>
       </div>
 
-      <section class="content">
-        <div class="container-fluid">
-                    
+      <section class="content" x-data="productsInstance()">
+        <div class="container-fluid">          
           <div class="row">
             <div class="col-12">
-
               <div class="card">
                 <div class="card-header">
                   <div class="float-sm-right">
