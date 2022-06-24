@@ -78,3 +78,577 @@ in APPPATH/Views/layouts/products.php on line 19.
  9 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
 10 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 11 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 09:49:00 --> Invalid file: layouts/products/index.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layouts/products/index.php')
+ 2 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('layouts/products/index', [], true)
+ 3 APPPATH/Views/home/index.php(5): view('layouts/products/index')
+ 4 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/home/index.php')
+ 5 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('home/index', [], true)
+ 7 APPPATH/Controllers/Home.php(11): view('home/index')
+ 8 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Home->index()
+ 9 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:12:00 --> Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)`
+in APPPATH/Controllers/ProductController.php on line 45.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(284): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)`', 'APPPATH/Controllers/ProductController.php', 45, [...])
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(284): include_once()
+ 3 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/ProductController.php')
+ 4 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductController')
+ 5 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductController')
+ 6 [internal function]: spl_autoload_call('App\\Controllers\\ProductController')
+ 7 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\ProductController', true)
+ 8 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 9 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:12:01 --> Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)`
+in APPPATH/Controllers/ProductController.php on line 45.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(284): CodeIgniter\Debug\Exceptions->errorHandler(8192, 'Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)`', 'APPPATH/Controllers/ProductController.php', 45, [...])
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(284): include_once()
+ 3 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/ProductController.php')
+ 4 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductController')
+ 5 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductController')
+ 6 [internal function]: spl_autoload_call('App\\Controllers\\ProductController')
+ 7 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\ProductController', true)
+ 8 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 9 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:12:43 --> syntax error, unexpected ':', expecting ']'
+in APPPATH/Controllers/ProductController.php on line 45.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/ProductController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\ProductController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\ProductController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:21:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit' at line 6
+CRITICAL - 2022-06-24 10:21:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit' at line 6
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit', 'detail')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:21:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = l' at line 6
+CRITICAL - 2022-06-24 10:21:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = l' at line 6
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = l', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = l')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = l')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = l')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('l')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:21:37 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit' at line 6
+CRITICAL - 2022-06-24 10:21:37 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit' at line 6
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:21:51 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 6
+CRITICAL - 2022-06-24 10:21:51 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 6
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:21:54 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 6
+CRITICAL - 2022-06-24 10:21:54 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 6
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:22:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+CRITICAL - 2022-06-24 10:22:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(69): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:22:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+CRITICAL - 2022-06-24 10:22:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(69): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:22:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+CRITICAL - 2022-06-24 10:22:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(69): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:22:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+CRITICAL - 2022-06-24 10:22:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(69): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:22:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+CRITICAL - 2022-06-24 10:22:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(69): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:22:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+CRITICAL - 2022-06-24 10:22:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE p.slug = 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit'' at line 7
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 4 APPPATH/Controllers/ProductController.php(69): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        GROUP BY p.uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:22:42 --> syntax error, unexpected '$slug' (T_VARIABLE), expecting ')'
+in APPPATH/Controllers/ProductController.php on line 69.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/ProductController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\ProductController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\ProductController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:23:09 --> Unknown column 'lorem' in 'where clause'
+CRITICAL - 2022-06-24 10:23:09 --> Unknown column 'lorem' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:23:10 --> Unknown column 'lorem' in 'where clause'
+CRITICAL - 2022-06-24 10:23:10 --> Unknown column 'lorem' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit     GROUP BY p.uid ')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:24:03 --> Cannot use [] for reading
+in APPPATH/Controllers/ProductController.php on line 73.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2022-06-24 10:27:45 --> syntax error, unexpected '}'
+in APPPATH/Controllers/ProductController.php on line 77.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/ProductController.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProductController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProductController')
+ 4 [internal function]: spl_autoload_call('App\\Controllers\\ProductController')
+ 5 SYSTEMPATH/CodeIgniter.php(846): class_exists('\\App\\Controllers\\ProductController', true)
+ 6 SYSTEMPATH/CodeIgniter.php(453): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 10:27:52 --> Unknown column 'prm.images' in 'field list'
+CRITICAL - 2022-06-24 10:27:52 --> Unknown column 'prm.images' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.*, u.username, GROUP_CONCAT(prm.images) AS images FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'
+        GROUP BY p.uid ', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.*, u.username, GROUP_CONCAT(prm.images) AS images FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'
+        GROUP BY p.uid ')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.*, u.username, GROUP_CONCAT(prm.images) AS images FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'
+        GROUP BY p.uid ')
+ 4 APPPATH/Controllers/ProductController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT p.*, u.username, GROUP_CONCAT(prm.images) AS images FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = \'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit\'
+        GROUP BY p.uid ')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:29:59 --> syntax error, unexpected '(', expecting ';'
+in APPPATH/Views/products/detail.php on line 15.
+ 1 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('products/detail', [], true)
+ 3 APPPATH/Controllers/ProductController.php(83): view('products/detail', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 5 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 6 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:30:07 --> Invalid argument supplied for foreach()
+in APPPATH/Views/products/detail.php on line 11.
+ 1 APPPATH/Views/products/detail.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argument supplied for foreach()', 'APPPATH/Views/products/detail.php', 11, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/products/detail.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('products/detail', [], true)
+ 5 APPPATH/Controllers/ProductController.php(83): view('products/detail', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:30:20 --> Invalid argument supplied for foreach()
+in APPPATH/Views/products/detail.php on line 11.
+ 1 APPPATH/Views/products/detail.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argument supplied for foreach()', 'APPPATH/Views/products/detail.php', 11, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/products/detail.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('products/detail', [], true)
+ 5 APPPATH/Controllers/ProductController.php(83): view('products/detail', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-24 10:30:23 --> Invalid argument supplied for foreach()
+in APPPATH/Views/products/detail.php on line 11.
+ 1 APPPATH/Views/products/detail.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argument supplied for foreach()', 'APPPATH/Views/products/detail.php', 11, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/products/detail.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('products/detail', [], true)
+ 5 APPPATH/Controllers/ProductController.php(83): view('products/detail', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit')
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

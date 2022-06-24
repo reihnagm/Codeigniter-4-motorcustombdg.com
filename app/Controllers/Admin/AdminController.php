@@ -113,10 +113,12 @@ class AdminController extends BaseController
         $filesCount = (int) $request->getPost("filesCount");
         $useruid = $session->get("useruid");
 
+        $slug = url_title($title, '-', true);
+
         $db->transStart();
 
-        $queryInsertProduct = "INSERT INTO products (uid, title, description, img, user_uid) 
-        VALUES('$productUid', '$title', '$description', '', '$useruid')";
+        $queryInsertProduct = "INSERT INTO products (uid, title, description, img, user_uid, slug) 
+        VALUES('$productUid', '$title', '$description', '', '$useruid', '$slug')";
 
         for ($i = 0; $i < $filesCount; $i++) {  
             $filename = $_FILES["file-".$i]["name"];

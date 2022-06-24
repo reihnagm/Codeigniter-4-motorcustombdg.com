@@ -18,14 +18,20 @@ class ProductController extends BaseController {
         $limit = (int) $req->getVar("limit") ?: 10;
         $offset = ($page - 1) * $limit;
         try {
-            $resultCountProducts = $db->query("SELECT * FROM products");
+            $resultCountProducts = $db->query("SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid");
             $resultTotal = $limit > 10 ? ceil(count($resultCountProducts->getResult()) / $limit) : count($resultCountProducts->getResult());
             $perPage = ceil($resultTotal / $limit);
             $prevPage = $page === 1 ? 1 : $page - 1;
             $nextPage = $page === $perPage ? 1 : $page + 1;
-            $queryProducts = $db->query("SELECT p.*, u.username, GROUP_CONCAT(prm.img) AS images FROM products p 
+            $queryProducts = $db->query("SELECT p.*, u.username, GROUP_CONCAT(prm.img) AS images 
+            FROM products p 
             INNER JOIN users u 
-            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_imgs prm 
+            ON p.uid = prm.product_uid 
             GROUP BY p.uid
             LIMIT $offset, $limit");
             $products = $queryProducts->getResult();
@@ -50,6 +56,31 @@ class ProductController extends BaseController {
                 "message" => $e->getMessage(),
             ], 500);
         }
-     }   
+    }
+    
+    public function detail($slug) {
+        $db = Database::connect();
+        $queryResultProducts = $db->query("SELECT p.*, u.username, GROUP_CONCAT(prm.img) AS images FROM products p 
+        INNER JOIN users u 
+        ON u.uid = p.user_uid 
+        INNER JOIN product_imgs prm 
+        ON p.uid = prm.product_uid 
+        WHERE p.slug = '$slug'
+        GROUP BY p.uid ");
+
+        $products = $queryResultProducts->getResult();
+
+        if(!empty($products)) {
+            $data["title"] = $products[0]->title;
+            $data["description"] = $products[0]->description;
+            $data["images"] = explode(',', $products[0]->images);
+        } else {
+            $data["title"] = "-";
+            $data["description"] = "-";
+            $data["images"] = [];
+        }
+
+        return view('products/detail', $data);
+    }
 
 }

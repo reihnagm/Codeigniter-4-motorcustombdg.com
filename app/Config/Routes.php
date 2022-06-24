@@ -56,6 +56,7 @@ $routes->group('auth', function($routes) {
 $routes->group('products', function($routes) {
     $routes->get('/', 'ProductController::index', ['namespace' => 'App\Controllers']);
     $routes->get('init-products', 'ProductController::initProducts', ['namespace' => 'App\Controllers']);
+    $routes->get('(:any)', 'ProductController::detail/$1', ['namespace' => 'App\Controllers']);
 });
 
 /*
