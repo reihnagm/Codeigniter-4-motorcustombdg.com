@@ -161,3 +161,124 @@ in APPPATH/Views/products/detail.php on line 8.
  7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
  8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-25 03:09:43 --> Unknown column 'p.type' in 'on clause'
+CRITICAL - 2022-06-25 03:09:43 --> Unknown column 'p.type' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types 
+            FROM products p 
+            INNER JOIN product_files pf ON p.uid = pf.product_uid
+            INNER JOIN product_types pt ON pt.id = p.type 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types 
+            FROM products p 
+            INNER JOIN product_files pf ON p.uid = pf.product_uid
+            INNER JOIN product_types pt ON pt.id = p.type 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types 
+            FROM products p 
+            INNER JOIN product_files pf ON p.uid = pf.product_uid
+            INNER JOIN product_types pt ON pt.id = p.type 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/Admin/AdminController.php(191): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types 
+            FROM products p 
+            INNER JOIN product_files pf ON p.uid = pf.product_uid
+            INNER JOIN product_types pt ON pt.id = p.type 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->showFile('what-is-lorem-ipsum')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-25 03:10:42 --> Undefined variable: variable
+in APPPATH/Controllers/Admin/AdminController.php on line 201.
+ 1 APPPATH/Controllers/Admin/AdminController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: variable', 'APPPATH/Controllers/Admin/AdminController.php', 201, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->showFile('what-is-lorem-ipsum')
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-25 03:11:15 --> Undefined variable: val
+in APPPATH/Controllers/Admin/AdminController.php on line 202.
+ 1 APPPATH/Controllers/Admin/AdminController.php(202): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: val', 'APPPATH/Controllers/Admin/AdminController.php', 202, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->showFile('what-is-lorem-ipsum')
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-25 03:13:49 --> Unknown column 'prm.product_uid' in 'on clause'
+CRITICAL - 2022-06-25 03:13:49 --> Unknown column 'prm.product_uid' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/Admin/AdminController.php(87): CodeIgniter\Database\BaseConnection->query('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->productsEdit('what-is-lorem-ipsum')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-25 03:14:34 --> Trying to get property 'files' of non-object
+in APPPATH/Controllers/Admin/AdminController.php on line 219.
+ 1 APPPATH/Controllers/Admin/AdminController.php(219): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'files\' of non-object', 'APPPATH/Controllers/Admin/AdminController.php', 219, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->showFile('what-is-lorem-ipsum')
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-25 03:23:36 --> Unknown column 'prm.product_uid' in 'on clause'
+CRITICAL - 2022-06-25 03:23:36 --> Unknown column 'prm.product_uid' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/Admin/AdminController.php(87): CodeIgniter\Database\BaseConnection->query('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'what-is-lorem-ipsum\'
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->productsEdit('what-is-lorem-ipsum')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-25 03:40:54 --> Unknown column 'prm.product_uid' in 'on clause'
+CRITICAL - 2022-06-25 03:40:54 --> Unknown column 'prm.product_uid' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'tests\'
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'tests\'
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'tests\'
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/Admin/AdminController.php(87): CodeIgniter\Database\BaseConnection->query('SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = \'tests\'
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->productsEdit('FCPATH/tests')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

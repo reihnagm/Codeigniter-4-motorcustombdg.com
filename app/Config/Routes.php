@@ -41,6 +41,7 @@ $routes->group('admin', function($routes) {
     $routes->get('/', 'AdminController::index', ['namespace' => 'App\Controllers\Admin']);
     $routes->get('products', 'AdminController::products', ['namespace' => 'App\Controllers\Admin']);
     $routes->post('products/upload', 'AdminController::productsUpload', ['namespace' => 'App\Controllers\Admin']);
+    $routes->get('products/(:any)/show-file', 'AdminController::showFile/$1', ['namespace' => 'App\Controllers\Admin']);
     $routes->post('products/store', 'AdminController::store', ['namespace' => 'App\Controllers\Admin']);
     $routes->get('products/(:any)/edit', 'AdminController::productsEdit/$1', ['namespace' => 'App\Controllers\Admin']);
     $routes->get('products/(:any)/delete', 'AdminController::productsDelete/$1', ['namespace' => 'App\Controllers\Admin']);

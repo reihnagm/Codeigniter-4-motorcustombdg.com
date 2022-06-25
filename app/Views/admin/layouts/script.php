@@ -24,6 +24,45 @@
         return false;
     }
 
+    function showFile(slug) {
+        $(".bd-show-file-modal-lg").modal("toggle")
+        var containerCarouselIndicators = $(".show-carousel-indicators-file-wrapper").html('')
+        var containerCarouselInner = $(".show-carousel-inner-file-wrapper").html('')
+        $.ajax({
+            url: `<?= base_url() ?>/admin/products/${slug}/show-file`,
+            type: 'GET',
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                var data = response.data
+                var i = 0
+                for (var key in data.files) {
+                    containerCarouselIndicators.append(`
+                        <li data-slide-to=${i} class="${i == 0 ? "active" : ""}"></li>
+                    `)
+                    if(data.files[key].type == "image") {
+                        containerCarouselInner.append(`
+                            <div class="carousel-item ${i == 0 ? "active" : ""}">
+                                <img class="d-block w-100" src='${baseUrl}/${data.files[key].url}' alt='${baseUrl}/${data.files[key].url}'>
+                            </div>
+                        `) 
+                    } else {
+                        containerCarouselInner.append(`
+                            <div class="carousel-item ${i == 0 ? "active" : ""}">
+                                <video src='${baseUrl}/${data.files[key].url}' controls> </video>
+                            </div>
+                        `) 
+                    }
+                    i++
+                }
+        
+            },
+            error: function(data) {
+                alert(data)
+            }
+        });
+    }
+
     function removePreview(e, i) {
         $(`#form-preview-files-${i}`).trigger("reset")
         $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
@@ -33,6 +72,20 @@
     function changeProductFile(e, i) {
         var reader = new FileReader()
         var container = $(`#product-files-remove-${i}`).html('')
+
+        var size = e.files[0].size / 1024 / 1024;
+
+        if(size > 5) {
+            $(`#form-preview-files-${i}`).trigger("reset")
+            $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
+            Swal.fire({
+                icon: 'info',
+                title: `<h6>File size exceeds 5 MB</h6>`,
+                text: '',
+                showConfirmButton: true,
+            })
+            return
+        }
 
         if(checkExt(e.files[0].type)) {
             reader.onload = function (e) {

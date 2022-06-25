@@ -179,6 +179,54 @@ class AdminController extends BaseController
         }
     }
 
+    public function showFile($slug) {
+        $db = Database::connect();
+        try {
+            $db->transStart();
+            $queryProducts = $db->query("SELECT GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types 
+            FROM products p 
+            INNER JOIN product_files pf ON p.uid = pf.product_uid
+            INNER JOIN product_types pt ON pt.id = pf.type 
+            WHERE p.slug = '$slug'
+            GROUP BY p.uid");
+            $products = $queryProducts->getResult();
+
+            $data = [];
+      
+            foreach ($products as $key => $value) {
+                
+                $files = [];
+
+                foreach (explode(",", $value->files) as $key => $val) {
+                    $files[] = [
+                        "url" => $val,
+                        "type" => explode(",", $value->types)[$key]
+                    ];
+                }
+
+                $nestedData["files"] = $files;
+                
+                $files[] = $nestedData;
+                
+            }
+
+            $data[] = $nestedData;
+            
+            return $this->respond([
+                "error" => false,
+                "code" => 200, 
+                "message" => "Successfully fetch show file",
+                "data" => $data[0]
+            ],200); 
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+                "data" => null
+            ], 500);
+        }
+    }
 
     public function initDatatablesProducts() {
         $db = Database::connect();
@@ -227,7 +275,7 @@ class AdminController extends BaseController
             $nestedData['no'] = $i++;
             $nestedData['title'] = $val->title;
             $nestedData['description'] = $val->description;
-            $nestedData['files'] = "";
+            $nestedData['files'] = "<button type='button' onclick=showFile('$val->slug') class='btn btn-success'><i class='fa-solid fa-file'></i></button>";
             $nestedData['uploadby'] = $val->username;
             $nestedData['edit'] = "<button type='button' @click=editProduct('$val->slug') class='btn btn-info'><i class='fa-solid fa-pen-to-square'></i></button>";
             $nestedData['delete'] = "<button type='button' onclick=deleteProduct('$val->slug') class='btn btn-danger'><i class='fa-solid fa-trash'></i></button>";
