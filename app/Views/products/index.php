@@ -10,13 +10,18 @@
     <div class="d-flex flex-row flex-wrap justify-content-between gap-8">
         <template x-if="products.length == 0">
             <div class="py-20 center">
-                <p>Produk belum ada, tambahkan Produk Anda disini</p>
+                <p>Produk belum ada</p>
             </div>
         </template>
         <template x-for="product in products" :key="product.id">
             <div class="box-product">
                 <a @click="productDetail(product.slug)" href="javascript:void(0)">
-                    <img :src="product.images.split(',')[0]" width="180"> 
+                    <template x-if="product.files[0].type == 'image'">
+                        <img :src="product.files[0].url" width="180"> 
+                    </template>
+                    <template x-if="product.files[0].type == 'video'">
+                        <video :src="product.files[0].url" width="180" controls> </video>
+                    </template>
                     <h3 class="py-5" x-text="product.title.substring(0, 50) + '...'"></h3>
                     <p class="f-24 py-5" x-text="product.description.substring(0, 30) + '...'"></p>
                     <small class="my-20">Uploaded by : <span class="badge badge-secondary" x-text="product.username"></span></small>

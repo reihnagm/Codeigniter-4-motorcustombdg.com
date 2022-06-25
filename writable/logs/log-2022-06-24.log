@@ -1645,3 +1645,150 @@ in APPPATH/Controllers/Admin/AdminController.php on line 227.
  3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
  4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 23:48:02 --> Table 'motorcustombdg.product_imgs' doesn't exist
+CRITICAL - 2022-06-24 23:48:02 --> Table 'motorcustombdg.product_imgs' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(21): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 23:48:06 --> Table 'motorcustombdg.product_imgs' doesn't exist
+CRITICAL - 2022-06-24 23:48:06 --> Table 'motorcustombdg.product_imgs' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(21): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 23:50:59 --> Table 'motorcustombdg.product_imgs' doesn't exist
+CRITICAL - 2022-06-24 23:50:59 --> Table 'motorcustombdg.product_imgs' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(21): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 23:52:40 --> Unknown column 'pf.file' in 'field list'
+CRITICAL - 2022-06-24 23:52:40 --> Unknown column 'pf.file' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10')
+ 4 APPPATH/Controllers/ProductController.php(36): CodeIgniter\Database\BaseConnection->query('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-24 23:53:16 --> Unknown column 'pf.file' in 'field list'
+CRITICAL - 2022-06-24 23:53:16 --> Unknown column 'pf.file' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10')
+ 4 APPPATH/Controllers/ProductController.php(36): CodeIgniter\Database\BaseConnection->query('SELECT p.*, u.username, GROUP_CONCAT(pf.file) AS files 
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            GROUP BY p.uid
+            LIMIT 0, 10')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

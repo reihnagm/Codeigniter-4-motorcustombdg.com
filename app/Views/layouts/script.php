@@ -268,7 +268,12 @@
                         this.hasNext = res.hasNext
                         this.loading = false
                     } else {
-                        alert("Error!")
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>There was problem</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        })
                     }
                 })
                 .catch((_) => {})
@@ -288,7 +293,12 @@
                             this.hasNext = res.hasNext
                             this.loading = false
                         } else {
-                            alert("Error!")
+                            Swal.fire({
+                                icon: 'info',
+                                title: `<h6>There was problem</h6>`,
+                                text: '',
+                                showConfirmButton: true,
+                            })
                         }
                     }).catch((_) => {})
                 } 
