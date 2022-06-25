@@ -1,28 +1,58 @@
 <script>
     var baseUrl = '<?= base_url() ?>'
 
+    function checkExt(ext) {
+        switch (ext) {
+            case "video/mp4":
+                return true;
+            break;
+            case "image/png":
+                return false;
+            break;
+            case "image/jpg":
+                return false;
+            break; 
+            case "image/gif":
+                return false;
+            break;   
+            case "image/jpeg":
+                return false;
+            break;            
+            default:
+            break;
+        }
+        return false;
+    }
+
     function removePreview(e, i) {
         $(`#form-preview-files-${i}`).trigger("reset")
-        $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/150")
+        $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
         $(e).css("display", "none")
     }
 
     function changeProductFile(e, i) {
         var reader = new FileReader()
-        $(`#product-files-remove-${i}`).css("position", "absolute")
         var container = $(`#product-files-remove-${i}`).html('')
 
-        if(e.files[0].type == "video/mp4") {
+        if(checkExt(e.files[0].type)) {
             reader.onload = function (e) {
                 $(`#preview-image-${i}`).css("display", "none")
                 $(`#preview-video-${i}`).css("display", "block")
                 $(`#preview-video-${i}`).attr("src", e.target.result)
             }       
             reader.readAsDataURL(e.files[0])
-        } else if(e.files[0].type == "image/png" || e.files[0].type == "image/jpg" || e.files[0].type == "image/gif" || e.files[0].type == "image/jpeg") {
+        } else {
             reader.onload = function (e) {
                 $(`#preview-image-${i}`).attr("src", e.target.result)
-                container.append(`<a href="javascript:void(0)" onclick="removePreview(this, ${i})"> x </a>`)
+                container.append(`<a href="javascript:void(0)" style="
+                color: white; 
+                text-align: center;
+                display: inline-block;
+                position: absolute;
+                width: 20px;
+                right: 0;
+                top: 0;
+                background: red;" onclick="removePreview(this, ${i})"> x </a>`)
             }       
             reader.readAsDataURL(e.files[0])
         }

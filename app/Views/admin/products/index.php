@@ -26,7 +26,7 @@
             <textarea class="form-control" id="description"></textarea>
           </div>
           <div class="form-group">
-            <label for="max-upload">Min upload 2 ( Images & Videos ):</label>
+            <label for="max-upload">Min upload 2 Images & Videos (5 MB):</label>
             <!-- <div class="input-group">
               <div class="custom-file">
                 <input type="file"  accept="image/*,videos/*"  name="file" class="custom-file-input" id="file-img" multiple>
@@ -35,16 +35,16 @@
             </div> -->
             <div class="d-flex box-previews"> 
               <div style="margin: 10px 0px; display: flex;">
-                <?php for($i = 0; $i < 5; $i++): ?>
-                  <form id="form-preview-files-<?= $i ?>">
-                    <label for="product-files-<?=$i?>">
+                <?php for($i = 0; $i < 5; $i++): ?> 
+                  <form id="form-preview-files-<?= $i ?>" style="margin: 0px 4px 0px 4px;">
+                    <label class="product-files-label" for="product-files-<?= $i ?>">
                       <div id="wrapper-product-files">
-                        <img id="preview-image-<?= $i ?>" src="https://via.placeholder.com/150" width="150">
-                        <video id="preview-video-<?= $i ?>" width="150" style="display:none;" controls>
+                        <img id="preview-image-<?= $i ?>" src="https://via.placeholder.com/140" width="140">
+                        <video id="preview-video-<?= $i ?>" width="130" style="display:none;" controls>
                           Your browser does not support HTML video.
                         </video>
-                        <div class="products-files-remove" id="product-files-remove-<?= $i ?>">
-                          
+                        <div class="products-files-remove" id="product-files-remove-<?= $i ?>"> 
+                      
                         </div>
                       </div>
                     </label>
