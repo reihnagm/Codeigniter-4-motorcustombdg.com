@@ -1,7 +1,34 @@
 <script>
-    var baseUrl = '<?= base_url() ?>';
+    var baseUrl = '<?= base_url() ?>'
 
-    function deleteProduct(uid) {
+    function removePreview(e, i) {
+        $(`#form-preview-files-${i}`).trigger("reset")
+        $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/150")
+        $(e).css("display", "none")
+    }
+
+    function changeProductFile(e, i) {
+        var reader = new FileReader()
+        $(`#product-files-remove-${i}`).css("position", "absolute")
+        var container = $(`#product-files-remove-${i}`).html('')
+
+        if(e.files[0].type == "video/mp4") {
+            reader.onload = function (e) {
+                $(`#preview-image-${i}`).css("display", "none")
+                $(`#preview-video-${i}`).css("display", "block")
+                $(`#preview-video-${i}`).attr("src", e.target.result)
+            }       
+            reader.readAsDataURL(e.files[0])
+        } else if(e.files[0].type == "image/png" || e.files[0].type == "image/jpg" || e.files[0].type == "image/gif" || e.files[0].type == "image/jpeg") {
+            reader.onload = function (e) {
+                $(`#preview-image-${i}`).attr("src", e.target.result)
+                container.append(`<a href="javascript:void(0)" onclick="removePreview(this, ${i})"> x </a>`)
+            }       
+            reader.readAsDataURL(e.files[0])
+        }
+    }
+
+    function deleteProduct(slug) {
         Swal.fire({
             icon: 'info',
             title: `<h6>Hapus produk?</h6>`,
@@ -12,7 +39,7 @@
             showConfirmButton: true,
             backdrop: 'swal2-backdrop-hide', 
             preConfirm: (_) => {
-                return fetch(`<?= base_url() ?>/admin/products/${uid}/delete`, {
+                return fetch(`<?= base_url() ?>/admin/products/${slug}/delete`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -122,7 +149,7 @@
                         data: "description"
                     },
                     {
-                        data: "img"
+                        data: "files"
                     },
                     {
                         data: "uploadby"
@@ -153,6 +180,7 @@
                             text: '',
                             showConfirmButton: true,
                         })
+                        return 
                     } else {
                         for (var f of input.files) {
                             i++
@@ -202,22 +230,37 @@
                     })
                     return;
                 }
-                var files = $("#file-img")[0].files
-                if(files.length == 0) {
+
+                var filesData = []
+                for (var i = 0; i < 5; i++) {
+                    var files = $(`#product-files-${i}`)[0].files
+                    filesData.push(files) 
+                }
+
+                var files = filesData.filter(function(file) {
+                    if(file.length == 1) {
+                        return true
+                    } else {
+                        return false
+                    }
+                })
+
+                if(files.length < 2) {
                     Swal.fire({
                         icon: 'info',
-                        title: `<h6>Gambar wajib diisi!</h6>`,
+                        title: `<h6>Berkas minimal 2 wajib diisi!</h6>`,
                         text: '',
                         showConfirmButton: true,
                     })
-                    return;
-                }
+                    return 
+                } 
+
                 var fd = new FormData()
                 fd.append("title", title)
                 fd.append("description", description)
                 fd.append('filesCount', files.length)
                 for (var i = 0; i < files.length; i++) {
-                    fd.append(`file-${i}`, files[i])
+                    fd.append(`file-${i}`, files[i][0])
                 }
                 $(this).text("...")
                 $.ajax({
@@ -237,6 +280,16 @@
                         $("#btn-create-a-product").text("Submit")
                         location.reload()
                     },
+                    error: function(data) {
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>There was problem</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        })
+                        $(".bd-create-products-modal-lg").modal("toggle")
+                        $("#btn-create-a-product").text("Submit")
+                    }
                 });
             })
         })

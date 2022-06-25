@@ -46,15 +46,25 @@ class AdminController extends BaseController
         ], 200);
     }
 
-    public function productsDelete($uid) {
+    public function productsDelete($slug) {
         $db = Database::connect();
         try {
-            $queryProducts = $db->query("SELECT * FROM products WHERE uid = '$uid'");
+            $db->transStart();
+            $queryProducts = $db->query("SELECT p.uid, p.title, p.description, GROUP_CONCAT(pf.url) AS files FROM products p 
+            INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            WHERE p.slug = '$slug'
+            GROUP BY p.uid");
             $products = $queryProducts->getResult();
-            if(file_exists(FCPATH . $products[0]->img)) {
-                unlink(FCPATH . $products[0]->img);
+            $productUid = $products[0]->uid;
+            foreach(explode(',',$products[0]->files) as $key => $val) {
+                if(file_exists(FCPATH . $val)) {
+                    unlink(FCPATH . $val);
+                }
+                $db->query("DELETE FROM product_files WHERE product_uid = '$productUid'");
             }
-            $db->simpleQuery("DELETE FROM products WHERE uid = '$uid'");
+            $db->query("DELETE FROM products WHERE slug = '$slug'");
+
+            $db->transComplete();       
             return $this->respond([
                 "error" => false,
                 "code" => 200,
@@ -69,12 +79,12 @@ class AdminController extends BaseController
         }
     }
 
-    public function productsEdit($uid) {
+    public function productsEdit($slug) {
         $db = Database::connect();
         try {
-            $queryProducts = $db->query("SELECT p.title, p.description, GROUP_CONCAT(prm.img) AS images FROM products p 
-            INNER JOIN product_imgs prm ON p.uid = prm.product_uid 
-            WHERE p.uid = '$uid'
+            $queryProducts = $db->query("SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
+            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            WHERE p.slug = '$slug'
             GROUP BY p.uid");
             $products = $queryProducts->getResult();
 
@@ -117,16 +127,37 @@ class AdminController extends BaseController
 
         $db->transStart();
 
-        $queryInsertProduct = "INSERT INTO products (uid, title, description, img, user_uid, slug) 
-        VALUES('$productUid', '$title', '$description', '', '$useruid', '$slug')";
+        $queryInsertProduct = "INSERT INTO products (uid, title, description, user_uid, slug) 
+        VALUES('$productUid', '".$db->escapeString($title)."', '".$db->escapeString($description)."', '$useruid', '$slug')";
 
         for ($i = 0; $i < $filesCount; $i++) {  
             $filename = $_FILES["file-".$i]["name"];
-            $location = 'public/web/'.$filename;
-            move_uploaded_file($_FILES["file-".$i]["tmp_name"], $location);
+            $path = $filename;
+            $type = "";
+            switch (pathinfo($path, PATHINFO_EXTENSION)) {
+                case 'png':
+                    $type = 1;
+                break;
+                case 'jpg':
+                    $type = 1;
+                break;
+                case 'jpeg':
+                    $type = 1;
+                break;
+                case 'gif':
+                    $type = 1;
+                break;
+                case 'mp4':
+                    $type = 2;
+                break;
+                default:
+                break;
+            }
+            $url = 'public/web/'.$filename;
+            move_uploaded_file($_FILES["file-".$i]["tmp_name"], $url);
             $productUidImgs = uuidv4();
-            $queryInsertProductImgs = "INSERT INTO product_imgs (uid, img, product_uid) 
-            VALUES('$productUidImgs', '$location', '$productUid')";
+            $queryInsertProductImgs = "INSERT INTO product_files (uid, url, type, product_uid) 
+            VALUES('$productUidImgs', '$url', '$type', '$productUid')";
             $db->query($queryInsertProductImgs);
         }       
         
@@ -157,7 +188,7 @@ class AdminController extends BaseController
 			0 => "no",
             1 => "title",
 			2 => "description",
-            3 => "img",
+            3 => "files",
             4 => "uploadby",
             5 => "edit",
             6 => "delete"
@@ -193,14 +224,13 @@ class AdminController extends BaseController
 
         $i = 1;
         foreach ($products as $key => $val) {
-            $image = base_url() . $val->img;
             $nestedData['no'] = $i++;
             $nestedData['title'] = $val->title;
             $nestedData['description'] = $val->description;
-            $nestedData['img'] = "<img src=$image class='img-fluid'/>";
+            $nestedData['files'] = "";
             $nestedData['uploadby'] = $val->username;
-            $nestedData['edit'] = "<button type='button' @click=editProduct('$val->uid') class='btn btn-info'><i class='fa-solid fa-pen-to-square'></i></button>";
-            $nestedData['delete'] = "<button type='button' onclick=deleteProduct('$val->uid') class='btn btn-danger'><i class='fa-solid fa-trash'></i></button>";
+            $nestedData['edit'] = "<button type='button' @click=editProduct('$val->slug') class='btn btn-info'><i class='fa-solid fa-pen-to-square'></i></button>";
+            $nestedData['delete'] = "<button type='button' onclick=deleteProduct('$val->slug') class='btn btn-danger'><i class='fa-solid fa-trash'></i></button>";
             $data[] = $nestedData;
         }
 

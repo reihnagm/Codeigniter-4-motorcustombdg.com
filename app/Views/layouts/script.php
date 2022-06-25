@@ -53,24 +53,25 @@
         Indicator.style.transform = "translate(0px)"
     }
 
-
     var ProductImg = document.getElementById("ProductImg")
     var SmallImg = document.getElementsByClassName("small-img")
-
-    SmallImg[0].onclick = function () {
-        ProductImg.src = SmallImg[0].src
-    }
-    SmallImg[1].onclick = function () {
-        ProductImg.src = SmallImg[1].src
-    }
-    SmallImg[2].onclick = function () {
-        ProductImg.src = SmallImg[2].src
-    }
-    SmallImg[3].onclick = function () {
-        ProductImg.src = SmallImg[3].src
-    }
-    SmallImg[4].onclick = function () {
-        ProductImg.src = SmallImg[4].src
+    
+    if(SmallImg.length != 0) {
+        SmallImg[0].onclick = function () {
+            ProductImg.src = SmallImg[0].src
+        }
+        SmallImg[1].onclick = function () {
+            ProductImg.src = SmallImg[1].src
+        }
+        SmallImg[2].onclick = function () {
+            ProductImg.src = SmallImg[2].src
+        }
+        SmallImg[3].onclick = function () {
+            ProductImg.src = SmallImg[3].src
+        }
+        SmallImg[4].onclick = function () {
+            ProductImg.src = SmallImg[4].src
+        }
     }
 
     // API
@@ -273,7 +274,7 @@
                 .catch((_) => {})
             },
             productDetail(slug) {
-                location.href = `${baseUrl}/products/${slug}`
+                location.href = `<?= base_url() ?>/products/${slug}`
             },
             loadMoreProducts() {
                 if(this.hasNext) {

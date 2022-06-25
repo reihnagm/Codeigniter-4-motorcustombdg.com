@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin - Motor Custom Bandung</title>
 
+  <!-- Main -->
+  <link rel="stylesheet" href="<?= base_url() ?>/public/assets/admin/css/style.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->

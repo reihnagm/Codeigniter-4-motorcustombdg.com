@@ -602,3 +602,7 @@ form a{
 .text-white {
     color: #fff;;
 }
+
+.box-preview-images .file {
+    display: none;
+}

@@ -16,11 +16,10 @@
         <template x-for="product in products" :key="product.id">
             <div class="box-product">
                 <a @click="productDetail(product.slug)" href="javascript:void(0)">
-                    <img :src="product.images.split(',')[0]" width="180">
-               
-                <h3 class="py-5" x-text="product.title"></h3>
-                <p class="f-24 py-5" x-text="product.description"></p>
-                <small class="my-20">Uploaded by : <span class="badge badge-secondary" x-text="product.username"></span></small>
+                    <img :src="product.images.split(',')[0]" width="180"> 
+                    <h3 class="py-5" x-text="product.title.substring(0, 50) + '...'"></h3>
+                    <p class="f-24 py-5" x-text="product.description.substring(0, 30) + '...'"></p>
+                    <small class="my-20">Uploaded by : <span class="badge badge-secondary" x-text="product.username"></span></small>
                 </a>
             </div>
         </template>

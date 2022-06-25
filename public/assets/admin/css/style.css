@@ -1,0 +1,9 @@
+#wrapper-product-files {
+    position: relative;
+}
+
+.product-files-remove {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
