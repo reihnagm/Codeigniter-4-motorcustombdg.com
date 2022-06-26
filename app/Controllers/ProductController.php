@@ -87,11 +87,14 @@ class ProductController extends BaseController {
     
     public function detail($slug) {
         $db = Database::connect();
-        $queryResultProducts = $db->query("SELECT p.*, u.username, GROUP_CONCAT(pf.url) AS files FROM products p 
+        $queryResultProducts = $db->query("SELECT p.*, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types 
+        FROM products p 
         INNER JOIN users u 
         ON u.uid = p.user_uid 
-        INNER JOIN product_files pf 
+        LEFT JOIN product_files pf 
         ON p.uid = pf.product_uid 
+        LEFT JOIN product_types pt
+        ON pf.type = pt.id
         WHERE p.slug = '$slug'
         GROUP BY p.uid ");
 
@@ -100,7 +103,14 @@ class ProductController extends BaseController {
         if(!empty($products)) {
             $data["title"] = $products[0]->title;
             $data["description"] = $products[0]->description;
-            $data["files"] = explode(',', $products[0]->files);
+            $files = [];
+            foreach (explode(',', $products[0]->files) as $key => $val) {
+                $files[] = [
+                    "url" => $val,
+                    "type" => explode(',', $products[0]->types)[$key] 
+                ];
+            }
+            $data["files"] = $files;
         } else {
             $data["title"] = "-";
             $data["description"] = "-";

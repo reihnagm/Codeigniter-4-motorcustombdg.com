@@ -5,12 +5,12 @@
 <div class="small-container single-product">
     <div class="row">
         <div class="col-2">
-            <img src="<?= base_url() .'/'. $images[0]?>" width="100%" id="ProductImg">
+            <img src="<?= base_url() .'/'. $files[0]["url"] ?>" width="100%" id="ProductImg">
 
             <div class="small-img-row">
-                <?php foreach($images as $key => $value): ?>
+                <?php foreach($files as $key => $value): ?>
                     <div class="small-img-col">
-                        <img src="<?= base_url() .'/'. $value ?>" width="100%" class="small-img">
+                        <img src="<?= base_url() .'/'. $value["url"] ?>" width="100%" class="small-img">
                     </div>
                 <?php endforeach; ?>
             </div>
