@@ -13,7 +13,7 @@
                 <p>Produk belum ada</p>
             </div>
         </template>
-        <template x-for="product in products" :key="product.id">
+        <template x-for="product in products">
             <div class="box-product">
                 <a @click="productDetail(product.slug)" href="javascript:void(0)">
                     <template x-if="product.files[0].type == 'image'">

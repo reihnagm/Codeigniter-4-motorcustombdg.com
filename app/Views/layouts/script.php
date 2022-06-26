@@ -53,26 +53,40 @@
         Indicator.style.transform = "translate(0px)"
     }
 
-    var ProductImg = document.getElementById("ProductImg")
-    var SmallImg = document.getElementsByClassName("small-img")
-    
-    if(SmallImg.length != 0) {
-        SmallImg[0].onclick = function () {
-            ProductImg.src = SmallImg[0].src
-        }
-        SmallImg[1].onclick = function () {
-            ProductImg.src = SmallImg[1].src
-        }
-        SmallImg[2].onclick = function () {
-            ProductImg.src = SmallImg[2].src
-        }
-        SmallImg[3].onclick = function () {
-            ProductImg.src = SmallImg[3].src
-        }
-        SmallImg[4].onclick = function () {
-            ProductImg.src = SmallImg[4].src
-        }
+    var productImg = $("#productImg")
+
+
+    for (let i = 0; i < 5; i++) {
+        $(`#small-img-${i}`).click(function() {
+            var type = $(this)[0].dataset.type
+            if(type == "video") {
+                $("#productImg").replaceWith(`<video src="${$(this).attr("src")}" width="100%" id="productVid" controls> </video>`)
+                $("#productVid").replaceWith(`<video src="${$(this).attr("src")}" width="100%" id="productVid" controls> </video>`)
+            } else {
+                $("#productImg").replaceWith(`<img src="${$(this).attr("src")}" width="100%" id="productImg">`)
+                $("#productVid").replaceWith(`<img src="${$(this).attr("src")}" width="100%" id="productImg">`)
+            }
+        })
     }
+    // var SmallImg = $(".small-img")
+    
+    // if(SmallImg.length != 0) {
+    //     SmallImg[0].onclick = function () {
+    //         ProductImg.src = SmallImg[0].src
+    //     }
+    //     SmallImg[1].onclick = function () {
+    //         ProductImg.src = SmallImg[1].src
+    //     }
+    //     SmallImg[2].onclick = function () {
+    //         ProductImg.src = SmallImg[2].src
+    //     }
+    //     SmallImg[3].onclick = function () {
+    //         ProductImg.src = SmallImg[3].src
+    //     }
+    //     SmallImg[4].onclick = function () {
+    //         ProductImg.src = SmallImg[4].src
+    //     }
+    // }
 
     // API
     var baseUrl = '<?= base_url() ?>';
