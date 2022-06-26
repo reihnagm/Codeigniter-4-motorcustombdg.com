@@ -22,6 +22,7 @@ class AdminController extends BaseController
     }
 
     public function products() {
+        
         return view('admin/products/index');
     }
 
@@ -35,8 +36,6 @@ class AdminController extends BaseController
             $extension = strtolower(end($x));
             $nestedData["filename"] = $x[0].'.'.$extension;
             $data[] = $nestedData;
-            // $location = 'public/'.$filename;
-            // move_uploaded_file($_FILES["file-".$i]["tmp_name"], $location);
         }
         return $this->respond([
             "error" => false,
@@ -82,26 +81,41 @@ class AdminController extends BaseController
     public function productsEdit($slug) {
         $db = Database::connect();
         try {
-            $queryProducts = $db->query("SELECT p.title, p.description, GROUP_CONCAT(pf.url) AS images FROM products p 
-            INNER JOIN product_files pf ON p.uid = prm.product_uid 
+            $queryProducts = $db->query("SELECT p.title, p.description, GROUP_CONCAT(pf.uid) AS pfid, GROUP_CONCAT(pf.url) AS files, 
+            GROUP_CONCAT(pt.name) AS types 
+            FROM products p 
+            LEFT JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            LEFT JOIN product_types pt 
+            ON pf.type = pt.id 
             WHERE p.slug = '$slug'
             GROUP BY p.uid");
             $products = $queryProducts->getResult();
 
             $data = [];
+        
+            foreach($products as $key => $value) {
+                $nestedData["title"] = $value->title;
+                $nestedData["description"] = $value->description;
+        
+                $files = [];
+                foreach (explode(',', $value->files) as $key => $val) {
+                    $files[] = [
+                        "uid" => explode(',', $value->pfid)[$key],
+                        "url" => $val,
+                        "type" => explode(',', $value->types)[$key]
+                    ];
+                    $nestedData["files"] = $files;
+                }
 
-            foreach($products as $key => $val) {
-                $nestedData["title"] = $val->title;
-                $nestedData["description"] = $val->description;
-                $nestedData["images"] = explode(",", $val->images);
                 $data[] = $nestedData; 
             }
-           
+         
             return $this->respond([
                 "error" => false,
                 "code" => 200,
                 "message" => "Successfully fetch edit product",
-                "data" => $data[0]
+                "data" => $data
             ], 200);
         } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
             return $this->respond([
@@ -110,6 +124,35 @@ class AdminController extends BaseController
                 "message" => $e->getMessage(),
             ], 500);
         }
+    }
+
+    public function filesDelete($slug) {
+        $db = Database::connect();
+        $request = Services::request();
+        $filesRemove = json_decode($request->getPost("filesRemove"));
+        try {
+            $db->transStart();
+            foreach ($filesRemove as $key => $val) {
+                if(file_exists(FCPATH . $val->url)) {
+                    unlink(FCPATH . $val->url);
+                }
+                $uid = $val->uid;
+                $db->query("DELETE FROM product_files WHERE uid = $uid");
+            }
+            $db->transComplete();
+            return $this->respond([
+                "error" => false,
+                "code" => 200,
+                "message" => "Successfully files delete",
+            ], 200);
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+
     }
 
     public function store() {
@@ -124,51 +167,111 @@ class AdminController extends BaseController
         $useruid = $session->get("useruid");
 
         $slug = url_title($title, '-', true);
-
-        $db->transStart();
-
-        $queryInsertProduct = "INSERT INTO products (uid, title, description, user_uid, slug) 
-        VALUES('$productUid', '".$db->escapeString($title)."', '".$db->escapeString($description)."', '$useruid', '$slug')";
-
-        for ($i = 0; $i < $filesCount; $i++) {  
-            $filename = $_FILES["file-".$i]["name"];
-            $path = $filename;
-            $type = "";
-            switch (pathinfo($path, PATHINFO_EXTENSION)) {
-                case 'png':
-                    $type = 1;
-                break;
-                case 'jpg':
-                    $type = 1;
-                break;
-                case 'jpeg':
-                    $type = 1;
-                break;
-                case 'gif':
-                    $type = 1;
-                break;
-                case 'mp4':
-                    $type = 2;
-                break;
-                default:
-                break;
-            }
-            $url = 'public/web/'.$filename;
-            move_uploaded_file($_FILES["file-".$i]["tmp_name"], $url);
-            $productUidImgs = uuidv4();
-            $queryInsertProductImgs = "INSERT INTO product_files (uid, url, type, product_uid) 
-            VALUES('$productUidImgs', '$url', '$type', '$productUid')";
-            $db->query($queryInsertProductImgs);
-        }       
         
         try {
-            $db->query($queryInsertProduct);
+            $db->transStart();
 
+            $db->query("INSERT INTO products (uid, title, description, user_uid, slug) 
+            VALUES('$productUid', '".$db->escapeString($title)."', '".$db->escapeString($description)."', '$useruid', '$slug')");
+
+            for ($i = 0; $i < $filesCount; $i++) {  
+                $filename = $_FILES["file-".$i]["name"];
+                $path = $filename;
+                $type = "";
+                switch (strtolower(pathinfo($path, PATHINFO_EXTENSION))) {
+                    case 'png':
+                        $type = 1;
+                    break;
+                    case 'jpg':
+                        $type = 1;
+                    break;
+                    case 'jpeg':
+                        $type = 1;
+                    break;
+                    case 'gif':
+                        $type = 1;
+                    break;
+                    case 'mp4':
+                        $type = 2;
+                    break;
+                    default:
+                    break;
+                }
+                $url = 'public/web/'.$filename;
+                move_uploaded_file($_FILES["file-".$i]["tmp_name"], $url);
+                $db->query("INSERT INTO product_files (uid, url, type, product_uid) 
+                VALUES('".uuidv4()."', '$url', '$type', '$productUid')");
+            }       
             $db->transComplete();        
             return $this->respond([
                 "error" => false,
                 "code" => 200,
                 "message" => "Successfully create a product",
+            ], 200);
+        } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->respond([
+                "error" => true,
+                "code" => 500,
+                "message" => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function update($slug) {
+        $db = Database::connect();
+        $request = Services::request();
+
+        $filesCount = $request->getPost("filesCount");
+       
+        try {
+            $db->transStart();
+
+            $queryProducts = $db->query("SELECT uid FROM products WHERE slug = '$slug'");
+            $product = $queryProducts->getResult()[0];
+            $productUid = $product->uid;
+
+            for ($i = 0; $i < $filesCount; $i++) { 
+                if(isset($_FILES["filesUpdate-".$i])) {
+                    $uid = $request->getPost("filesUpdateUid-".$i); 
+                    $filename = $_FILES["filesUpdate-".$i]["name"];
+                    $path = $filename;
+                    $type = "";
+                    switch (strtolower(pathinfo($path, PATHINFO_EXTENSION))) {
+                        case 'png':
+                            $type = 1;
+                        break;
+                        case 'jpg':
+                            $type = 1;
+                        break;
+                        case 'jpeg':
+                            $type = 1;
+                        break;
+                        case 'gif':
+                            $type = 1;
+                        break;
+                        case 'mp4':
+                            $type = 2;
+                        break;
+                        default:
+                        break;
+                    }
+                    $url = 'public/web/'.$filename;
+                    move_uploaded_file($_FILES["filesUpdate-".$i]["tmp_name"], $url);
+                    $db->query("REPLACE INTO product_files (uid, url, type, product_uid) VALUES($uid, '$url', '$type', '$productUid')");
+                }
+            }
+        
+            $title = $request->getPost("title");
+            $description = $request->getPost("description");
+            
+            $db->query("UPDATE products SET title ='$title', description = '$description'");
+
+            $db->transComplete();
+
+            return $this->respond([
+                "error" => false,
+                "code" => 200,
+                "message" => "Successfully update a file",
             ], 200);
         } catch(\CodeIgniter\Database\Exceptions\DatabaseException $e) {
             return $this->respond([

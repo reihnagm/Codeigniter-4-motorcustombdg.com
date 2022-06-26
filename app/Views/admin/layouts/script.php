@@ -43,13 +43,13 @@
                     if(data.files[key].type == "image") {
                         containerCarouselInner.append(`
                             <div class="carousel-item ${i == 0 ? "active" : ""}">
-                                <img class="d-block w-100" src='${baseUrl}/${data.files[key].url}' alt='${baseUrl}/${data.files[key].url}'>
+                                <img class="d-block w-100" height="450" src='${baseUrl}/${data.files[key].url}' alt='${baseUrl}/${data.files[key].url}'>
                             </div>
                         `) 
                     } else {
                         containerCarouselInner.append(`
                             <div class="carousel-item ${i == 0 ? "active" : ""}">
-                                <video src='${baseUrl}/${data.files[key].url}' controls> </video>
+                                <video src='${baseUrl}/${data.files[key].url}' height="450"  controls> </video>
                             </div>
                         `) 
                     }
@@ -66,6 +66,7 @@
     function removePreview(e, i) {
         $(`#form-preview-files-${i}`).trigger("reset")
         $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
+        $(`#preview-video-${i}`).css("display", "none")
         $(e).css("display", "none")
     }
 
@@ -110,6 +111,7 @@
             reader.readAsDataURL(e.files[0])
         }
     }
+
 
     function deleteProduct(slug) {
         Swal.fire({
@@ -171,32 +173,223 @@
         })
     }
 
+    function uuidv4() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        )
+    }
+
     function productsInstance() {
         return {
-            images: [],
-            test() {
-                alert("test")
+            files: [],
+            removeFiles: [],
+            changeProductFileEdit(e, i) {
+                var reader = new FileReader()
+                var container = $(`#product-files-remove-edit-${i}`).html('')
+
+                var size = e.target.files[0].size / 1024 / 1024;
+
+                if(size > 5) {
+                    $(`#form-preview-files-edit-${i}`).trigger("reset")
+                    $(`#preview-image-edit-${i}`).attr("src", "https://via.placeholder.com/140")
+                    Swal.fire({
+                        icon: 'info',
+                        title: `<h6>File size exceeds 5 MB</h6>`,
+                        text: '',
+                        showConfirmButton: true,
+                    })
+                    return
+                }
+
+                if(checkExt(e.target.files[0].type)) {
+                    reader.onload = function (e) {
+                        $(`#preview-image-edit-${i}`).replaceWith(
+                            `<video id="preview-video-edit-${i}" src=${e.target.result} width="140" controls>
+                                Your browser does not support HTML video.
+                            </video>`
+                        )
+                    }       
+                    reader.readAsDataURL(e.target.files[0])
+                } else {
+                    reader.onload = function (e) {                     
+                        $(`#preview-image-edit-${i}`).attr("src", e.target.result)
+                        container.append(`
+                            <a href="javascript:void(0)" style="
+                                color: white; 
+                                text-align: center;
+                                display: inline-block;
+                                position: absolute;
+                                width: 20px;
+                                right: 0;
+                                top: 0;
+                                background: red;" @click="removePreviewEdit($event, ${i})"> x 
+                            </a>
+                        `)
+                    }       
+                    reader.readAsDataURL(e.target.files[0])
+                }
+                var filesEdit = JSON.parse($("#files-edit").val())
+                filesEdit.push({
+                    "uid": $(`#product-files-edit-${i}`)[0].dataset.uid
+                })
+                $("#files-edit").val(JSON.stringify(filesEdit))
+            },
+            removePreviewEdit(e, i) {
+                this.removeFiles.push({
+                    "uid": $(`#product-files-edit-${i}`)[0].dataset.uid,
+                    "url": $(`#product-files-edit-${i}`)[0].dataset.url
+                })
+                var filesEdit = JSON.parse($("#files-edit").val())
+                $("#files-edit").val(JSON.stringify(filesEdit.filter(el => el.uid !== $(`#product-files-edit-${i}`)[0].dataset.uid)))
+                $(`#form-preview-files-edit-${i}`).trigger("reset")
+                $(`#preview-image-edit-${i}`).attr("src", "https://via.placeholder.com/140")
+                $(`#preview-video-edit-${i}`).replaceWith(`<img id="preview-image-edit-${i}" src="https://via.placeholder.com/140" width="140">`)
+                $(e.target).css("display", "none")
+            },
+            updateProduct() {
+                var filesUpdate = []
+                var slug = $("#slug").val()
+                var title = $("#title-edit").val()
+                var description = $("#description-edit").val()
+                var filesEdit = JSON.parse($("#files-edit").val())
+
+                if(title.trim() == "") {
+                    Swal.fire({
+                        icon: 'info',
+                        title: `<h6>Judul wajib diisi!</h6>`,
+                        text: '',
+                        showConfirmButton: true,
+                    })
+                    return 
+                }
+                if(description.trim() == "") {
+                    Swal.fire({
+                        icon: 'info',
+                        title: `<h6>Deskripsi wajib diisi!</h6>`,
+                        text: '',
+                        showConfirmButton: true,
+                    })
+                    return 
+                }
+                
+                if(filesEdit.length < 2) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: `<h6>Berkas minimal 2 data!</h6>`,
+                        text: '',
+                        showConfirmButton: true,
+                    })
+                    return 
+                }
+
+              
+                var fd = new FormData()
+                fd.append("title", title)
+                fd.append("description", description)
+                fd.append("filesRemove", JSON.stringify(this.removeFiles))
+                fd.append("filesCount", filesEdit.length)
+                for (var i = 0; i < filesEdit.length; i++) {
+                    if(typeof $(`#product-files-edit-${i}`)[0].files[0] != "undefined") {
+                        console.log(`${$(`#product-files-edit-${i}`)[0].dataset.uid} - ${$(`#product-files-edit-${i}`)[0].files[0]}`)
+                        fd.append(`filesUpdateUid-${i}`, $(`#product-files-edit-${i}`)[0].dataset.uid)
+                        fd.append(`filesUpdate-${i}`, $(`#product-files-edit-${i}`)[0].files[0])
+                    }
+                }
+            
+                $.ajax({
+                    url: `<?= base_url() ?>/admin/products/${slug}/files/delete`,
+                    type: 'POST',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        alert("success")
+                    },
+                    error: function(data) {
+                        alert("error")
+                    }
+                })
+                $.ajax({
+                    url: `<?= base_url() ?>/admin/products/${slug}/update`,
+                    type: 'POST',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        alert("success")
+                    },
+                    error: function(data) {
+                        alert("error")
+                    }
+                })
             },
             editProduct(uid) {
                 $(".bd-edit-products-modal-lg").modal("toggle")
-                var container = $(".box-preview-edited-images").html("")
+                $("#slug").val(uid)
+                var container = $(".wrapper-preview-files-edited").html('')
                 fetch(`<?= base_url() ?>/admin/products/${uid}/edit`)
                 .then((response) => response.json())
                 .then((json) => {
                     var res = json
                     var data = res.data
                     if(res.code == 200) {
-                        $("#title-edit").val(data.title)
-                        $("#description-edit").val(data.description)
-                        this.images = data.images
-                        for (var i = 0; i < this.images.length; i++) {
-                            var n = container.children().length
-                            container.append(
-                                `<div @click=test() style="margin: 20px ${n == 0 ? '0' : '8px'}">
-                                    <img src='${baseUrl}/${this.images[i]}' width="150" />
-                                </div>`
-                            )
+                        $("#title-edit").val(data[0].title)
+                        $("#description-edit").val(data[0].description)
+                        $("#files-edit").val(JSON.stringify(data[0].files))
+                        this.files = data[0].files  
+                        for (var i = 0; i < 5; i++) {
+                            if(typeof this.files[i] == "undefined") {
+                                container.append(`
+                                    <form id="form-preview-files-edit-${i}" style="margin: 0px 4px 0px 4px;">
+                                        <label class="product-files-label" for="product-files-edit-${i}">
+                                            <div id="wrapper-product-files">
+                                                <img id="preview-image-edit-${i}" src="https://via.placeholder.com/140" width="140">
+                                                <div class="products-files-remove" id="product-files-remove-edit-${i}"> </div>
+                                            </div>
+                                        </label>
+                                        <input type="file" accept="image/*,video/*" @change="changeProductFileEdit($event, ${i})" data-url="'-'" data-uid="'${uuidv4()}'" name="file" id="product-files-edit-${i}" style="display:none">     
+                                    </form>
+                                `)
+                            } else {
+                                container.append(`
+                                    <form id="form-preview-files-edit-${i}" style="margin: 0px 4px 0px 4px;">
+                                        <label class="product-files-label" for="product-files-edit-${i}">
+                                            <div id="wrapper-product-files">
+                                                <template x-if="${this.files[i].type == 'image'}">
+                                                    <img id="preview-image-edit-${i}" src="${baseUrl}/${this.files[i].url}" width="140">
+                                                </template>
+                                                <template x-if="${this.files[i].type == 'video'}">
+                                                    <video id="preview-video-edit-${i}" src="${baseUrl}/${this.files[i].url}" width="140" controls>
+                                                        Your browser does not support HTML video.
+                                                    </video>
+                                                </template>
+                                                <div class="products-files-remove" id="product-files-remove-edit-${i}">
+                                                <a href="javascript:void(0)" style="
+                                                    color: white; 
+                                                    text-align: center;
+                                                    display: inline-block;
+                                                    position: absolute;
+                                                    width: 20px;
+                                                    right: 0;
+                                                    top: 0;
+                                                    background: red;" @click="removePreviewEdit($event, ${i})"> x </a>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <input type="file" accept="image/*,video/*" @change="changeProductFileEdit($event, ${i})" data-url="'${this.files[i].url}'" data-uid="'${this.files[i].uid}'" name="file" id="product-files-edit-${i}" style="display:none">     
+                                    </form>
+                                `)
+                            }
                         }
+                    } 
+                     else {
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>There was problem!</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        })
+                        return 
                     }
                 })
                 .catch((_) => {})
@@ -249,46 +442,7 @@
                     }
                 ]
             })
-
-            $(document).on("change", "#file-img", function() {
-                var input = $(this)[0]
-                var container = $('.box-preview-images').html('')
-                var filename = ""
-                var i = 0
-                if(input.files && input.files[0]) {
-                    if (parseInt(input.files.length) > 5){
-                        Swal.fire({
-                            icon: 'info',
-                            title: `<h6>You can only upload a maximum of 5 files!</h6>`,
-                            text: '',
-                            showConfirmButton: true,
-                        })
-                        return 
-                    } else {
-                        for (var f of input.files) {
-                            i++
-                            filename += `${f.name}, `
-                            var reader = new FileReader()
-                            reader.onload = function (e) {
-                                var n = container.children().length
-                                container.append(
-                                    `<div class="preview-image-item ${n}" style="margin: 20px ${n == 0 ? '0' : '8px'}">
-                                        <img src="${e.target.result}" width="130">
-                                    </div>`
-                                )
-                            }
-                            reader.readAsDataURL(f)
-                        }
-                        $("#file-img-label").text(filename)
-                    }
-                } 
-                // var output = document.getElementById('output-file-img');
-                // output.src = URL.createObjectURL(file);
-                // output.onload = function() {
-                //     URL.revokeObjectURL(output.src) 
-                // }
-            })
-
+            
             $(document).on("click", "#btn-create-a-product", function(e) {
                 e.preventDefault()
                 var title = $("#title").val()
@@ -300,7 +454,7 @@
                         text: '',
                         showConfirmButton: true,
                     })
-                    return;
+                    return
                 }
                 var description = $("#description").val()
                 if(description.trim() == "") {
@@ -311,7 +465,7 @@
                         text: '',
                         showConfirmButton: true,
                     })
-                    return;
+                    return
                 }
 
                 var filesData = []
@@ -331,7 +485,7 @@
                 if(files.length < 2) {
                     Swal.fire({
                         icon: 'info',
-                        title: `<h6>Berkas minimal 2 wajib diisi!</h6>`,
+                        title: `<h6>Berkas minimal 2 data!</h6>`,
                         text: '',
                         showConfirmButton: true,
                     })
@@ -373,7 +527,7 @@
                         $(".bd-create-products-modal-lg").modal("toggle")
                         $("#btn-create-a-product").text("Submit")
                     }
-                });
+                })
             })
         })
     })(jQuery)

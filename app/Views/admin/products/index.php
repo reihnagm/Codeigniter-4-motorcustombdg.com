@@ -27,31 +27,21 @@
           </div>
           <div class="form-group">
             <label for="max-upload">Min upload 2 Images & Videos (5 MB):</label>
-            <!-- <div class="input-group">
-              <div class="custom-file">
-                <input type="file"  accept="image/*,videos/*"  name="file" class="custom-file-input" id="file-img" multiple>
-                <label class="custom-file-label" id="file-img-label" for="file-img">Choose file</label>
-              </div>
-            </div> -->
-            <div class="d-flex box-previews"> 
-              <div style="margin: 10px 0px; display: flex;">
-                <?php for($i = 0; $i < 5; $i++): ?> 
-                  <form id="form-preview-files-<?= $i ?>" style="margin: 0px 4px 0px 4px;">
-                    <label class="product-files-label" for="product-files-<?= $i ?>">
-                      <div id="wrapper-product-files">
-                        <img id="preview-image-<?= $i ?>" src="https://via.placeholder.com/140" width="140">
-                        <video id="preview-video-<?= $i ?>" width="130" style="display:none;" controls>
-                          Your browser does not support HTML video.
-                        </video>
-                        <div class="products-files-remove" id="product-files-remove-<?= $i ?>"> 
-                      
-                        </div>
-                      </div>
-                    </label>
-                    <input type="file" accept="image/*,video/*" onchange="changeProductFile(this, <?= $i ?>)" name="file" id="product-files-<?=$i?>" style="display:none">     
-                  </form>
-                  <?php endfor; ?>
-              </div>
+            <div style="margin: 10px 0px; display: flex;">
+              <?php for($i = 0; $i < 5; $i++): ?> 
+                <form id="form-preview-files-<?= $i ?>" style="margin: 0px 4px 0px 4px;">
+                  <label class="product-files-label" for="product-files-<?= $i ?>">
+                    <div id="wrapper-product-files">
+                      <img id="preview-image-<?= $i ?>" src="https://via.placeholder.com/140" width="140">
+                      <video id="preview-video-<?= $i ?>" style="display:none;"  width="140" controls>
+                        Your browser does not support HTML video.
+                      </video>
+                      <div class="products-files-remove" id="product-files-remove-<?= $i ?>"></div>
+                    </div>
+                  </label>
+                  <input type="file" accept="image/*,video/*" onchange="changeProductFile(this, <?= $i ?>)" name="file" id="product-files-<?=$i?>" style="display:none">     
+                </form>
+              <?php endfor; ?>
             </div>
           </div>
         </div>
@@ -65,9 +55,11 @@
 
   <!-- EDIT PRODUCT  -->
 
-  <div class="modal fade bd-edit-products-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" 
+  <div class="modal t fade bd-edit-products-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" 
     aria-hidden="true" 
     x-data="productsInstance()">
+    <input type="hidden" id="slug" />
+    <input type="hidden" id="files-edit" />
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -87,20 +79,14 @@
               <textarea class="form-control" id="description-edit"></textarea>
             </div>
             <div class="form-group">
-              <label for="exampleInputFile">Max upload 5 ( Images ):</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="file"  accept="image/*"  name="file" class="custom-file-input" id="file-img" multiple>
-                  <label class="custom-file-label" id="file-img-label" for="file-img">Choose file</label>
-                </div>
-              </div>
-              <div class="d-flex box-preview-edited-images" style="overflow-x: scroll;"> </div>
+              <label for="max-upload">Min upload 2 Images & Videos (5 MB):</label>
+              <div class="wrapper-preview-files-edited" style="margin: 10px 0px; display: flex;"></div>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="btn-create-a-product" type="button" class="btn btn-primary">Submit</button>
+          <button @click="updateProduct()" type="button" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>
@@ -115,12 +101,10 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Show File</h5>
         </div>
-        <div class="modal-body">
+        <div class="modal-body show-file">
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators show-carousel-indicators-file-wrapper">
-              <!-- <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+
             </ol>
             <div class="carousel-inner show-carousel-inner-file-wrapper"></div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

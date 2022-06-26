@@ -1,4 +1,3 @@
-   
   <!-- Alpine JS -->
   <script src="https://unpkg.com/alpinejs" defer></script>
   <!-- jQuery -->
