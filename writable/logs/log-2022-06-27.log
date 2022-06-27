@@ -1,0 +1,59 @@
+CRITICAL - 2022-06-27 07:26:04 --> Undefined variable: i
+in APPPATH/Views/admin/layouts/script.php on line 70.
+ 1 APPPATH/Views/admin/layouts/script.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: i', 'APPPATH/Views/admin/layouts/script.php', 70, [])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/admin/layouts/script.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('admin/layouts/script', [], true)
+ 5 APPPATH/Views/admin/layouts/foot.php(51): view('admin/layouts/script')
+ 6 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/admin/layouts/foot.php')
+ 7 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('admin/layouts/foot', [], true)
+ 9 APPPATH/Views/admin/products/index.php(213): view('admin/layouts/foot')
+10 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/admin/products/index.php')
+11 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('admin/products/index', [], true)
+13 APPPATH/Controllers/Admin/AdminController.php(26): view('admin/products/index')
+14 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->products()
+15 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+16 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-27 07:35:55 --> Unknown column '8c993a9e' in 'field list'
+ERROR - 2022-06-27 07:35:55 --> Unknown column '97f9898c' in 'where clause'
+CRITICAL - 2022-06-27 07:35:55 --> Unknown column '8c993a9e' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(8c993a9e-a88c-4c5a-85a0-cab415e6d4bf, \'public/web/2.jpg\', \'1\', \'8bd86804-fcac-428a-8ce4-9365c72cce06\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(8c993a9e-a88c-4c5a-85a0-cab415e6d4bf, \'public/web/2.jpg\', \'1\', \'8bd86804-fcac-428a-8ce4-9365c72cce06\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(8c993a9e-a88c-4c5a-85a0-cab415e6d4bf, \'public/web/2.jpg\', \'1\', \'8bd86804-fcac-428a-8ce4-9365c72cce06\')')
+ 4 APPPATH/Controllers/Admin/AdminController.php(260): CodeIgniter\Database\BaseConnection->query('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(8c993a9e-a88c-4c5a-85a0-cab415e6d4bf, \'public/web/2.jpg\', \'1\', \'8bd86804-fcac-428a-8ce4-9365c72cce06\')')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->update('dydrydr')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-27 07:35:55 --> Unknown column '97f9898c' in 'where clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('DELETE FROM product_files WHERE uid = 97f9898c-3f39-4697-8a0e-4ba64de716ed', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM product_files WHERE uid = 97f9898c-3f39-4697-8a0e-4ba64de716ed')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM product_files WHERE uid = 97f9898c-3f39-4697-8a0e-4ba64de716ed')
+ 4 APPPATH/Controllers/Admin/AdminController.php(140): CodeIgniter\Database\BaseConnection->query('DELETE FROM product_files WHERE uid = 97f9898c-3f39-4697-8a0e-4ba64de716ed')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->filesDelete('dydrydr')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-27 07:40:46 --> Undefined offset: 0
+in APPPATH/Controllers/Admin/AdminController.php on line 57.
+ 1 APPPATH/Controllers/Admin/AdminController.php(57): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'APPPATH/Controllers/Admin/AdminController.php', 57, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->productsDelete('test-1')
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-27 07:41:49 --> Unknown column 'c506d66e' in 'field list'
+CRITICAL - 2022-06-27 07:41:49 --> Unknown column 'c506d66e' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(c506d66e-8195-4d92-906c-2bc5d3e82c7f, \'public/web/1.jpg\', \'1\', \'aafbc8de-7d8c-4015-b192-497d36c92699\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(c506d66e-8195-4d92-906c-2bc5d3e82c7f, \'public/web/1.jpg\', \'1\', \'aafbc8de-7d8c-4015-b192-497d36c92699\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(c506d66e-8195-4d92-906c-2bc5d3e82c7f, \'public/web/1.jpg\', \'1\', \'aafbc8de-7d8c-4015-b192-497d36c92699\')')
+ 4 APPPATH/Controllers/Admin/AdminController.php(260): CodeIgniter\Database\BaseConnection->query('REPLACE INTO product_files (uid, url, type, product_uid) VALUES(c506d66e-8195-4d92-906c-2bc5d3e82c7f, \'public/web/1.jpg\', \'1\', \'aafbc8de-7d8c-4015-b192-497d36c92699\')')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->update('etstset')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

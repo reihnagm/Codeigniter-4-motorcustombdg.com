@@ -66,7 +66,9 @@
     function removePreview(e, i) {
         $(`#form-preview-files-${i}`).trigger("reset")
         $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
-        $(`#preview-video-${i}`).css("display", "none")
+        $(`#preview-video-${i}`).replaceWith(`
+            <img id="preview-image-${i}" src="https://via.placeholder.com/140" width="140">
+        `)
         $(e).css("display", "none")
     }
 
@@ -76,12 +78,11 @@
 
         var size = e.files[0].size / 1024 / 1024;
 
-        if(size > 5) {
-            $(`#form-preview-files-${i}`).trigger("reset")
+        if(size > 10) {
             $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
             Swal.fire({
                 icon: 'info',
-                title: `<h6>File size exceeds 5 MB</h6>`,
+                title: `<h6>File size exceeds 10 MB</h6>`,
                 text: '',
                 showConfirmButton: true,
             })
@@ -90,23 +91,36 @@
 
         if(checkExt(e.files[0].type)) {
             reader.onload = function (e) {
-                $(`#preview-image-${i}`).css("display", "none")
-                $(`#preview-video-${i}`).css("display", "block")
-                $(`#preview-video-${i}`).attr("src", e.target.result)
+                $(`#preview-image-${i}`).replaceWith(`
+                    <video id="preview-video-${i}" src=${e.target.result} width="140" controls>
+                        Your browser does not support HTML video.
+                    </video>
+                `)
+                container.append(`<a href="javascript:void(0)" style="
+                    color: white; 
+                    text-align: center;
+                    display: inline-block;
+                    position: absolute;
+                    width: 20px;
+                    right: 0;
+                    top: 0;
+                    background: red;" onclick="removePreview(this, ${i})"> x </a>`
+                )
             }       
             reader.readAsDataURL(e.files[0])
         } else {
             reader.onload = function (e) {
                 $(`#preview-image-${i}`).attr("src", e.target.result)
                 container.append(`<a href="javascript:void(0)" style="
-                color: white; 
-                text-align: center;
-                display: inline-block;
-                position: absolute;
-                width: 20px;
-                right: 0;
-                top: 0;
-                background: red;" onclick="removePreview(this, ${i})"> x </a>`)
+                    color: white; 
+                    text-align: center;
+                    display: inline-block;
+                    position: absolute;
+                    width: 20px;
+                    right: 0;
+                    top: 0;
+                    background: red;" onclick="removePreview(this, ${i})"> x </a>`
+                )
             }       
             reader.readAsDataURL(e.files[0])
         }
@@ -189,12 +203,11 @@
 
                 var size = e.target.files[0].size / 1024 / 1024;
 
-                if(size > 5) {
-                    $(`#form-preview-files-edit-${i}`).trigger("reset")
+                if(size > 10) {
                     $(`#preview-image-edit-${i}`).attr("src", "https://via.placeholder.com/140")
                     Swal.fire({
                         icon: 'info',
-                        title: `<h6>File size exceeds 5 MB</h6>`,
+                        title: `<h6>File size exceeds 10 MB</h6>`,
                         text: '',
                         showConfirmButton: true,
                     })
@@ -246,7 +259,7 @@
                 $(`#preview-video-edit-${i}`).replaceWith(`<img id="preview-image-edit-${i}" src="https://via.placeholder.com/140" width="140">`)
                 $(e.target).css("display", "none")
             },
-            updateProduct() {
+            updateProduct(e) {
                 var filesUpdate = []
                 var slug = $("#slug").val()
                 var title = $("#title-edit").val()
@@ -282,7 +295,6 @@
                     return 
                 }
 
-              
                 var fd = new FormData()
                 fd.append("title", title)
                 fd.append("description", description)
@@ -290,23 +302,25 @@
                 fd.append("filesCount", filesEdit.length)
                 for (var i = 0; i < filesEdit.length; i++) {
                     if(typeof $(`#product-files-edit-${i}`)[0].files[0] != "undefined") {
-                        console.log(`${$(`#product-files-edit-${i}`)[0].dataset.uid} - ${$(`#product-files-edit-${i}`)[0].files[0]}`)
                         fd.append(`filesUpdateUid-${i}`, $(`#product-files-edit-${i}`)[0].dataset.uid)
                         fd.append(`filesUpdate-${i}`, $(`#product-files-edit-${i}`)[0].files[0])
                     }
                 }
-            
+                $(e.target).text("...")
                 $.ajax({
                     url: `<?= base_url() ?>/admin/products/${slug}/files/delete`,
                     type: 'POST',
                     data: fd,
                     contentType: false,
                     processData: false,
-                    success: function(data) {
-                        alert("success")
-                    },
+                    success: function(data) {},
                     error: function(data) {
-                        alert("error")
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>There was problem!</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        })
                     }
                 })
                 $.ajax({
@@ -316,10 +330,22 @@
                     contentType: false,
                     processData: false,
                     success: function(data) {
-                        alert("success")
+                        $(e.target).text("Submit")
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>${data.message}</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        })
+                        location.reload()
                     },
                     error: function(data) {
-                        alert("error")
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>There was problem!</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                        })
                     }
                 })
             },
@@ -347,7 +373,7 @@
                                                 <div class="products-files-remove" id="product-files-remove-edit-${i}"> </div>
                                             </div>
                                         </label>
-                                        <input type="file" accept="image/*,video/*" @change="changeProductFileEdit($event, ${i})" data-url="'-'" data-uid="'${uuidv4()}'" name="file" id="product-files-edit-${i}" style="display:none">     
+                                        <input type="file" accept="image/*,video/*" @change="changeProductFileEdit($event, ${i})" data-url="-" data-uid="${uuidv4()}" name="file" id="product-files-edit-${i}" style="display:none">     
                                     </form>
                                 `)
                             } else {
@@ -376,7 +402,7 @@
                                                 </div>
                                             </div>
                                         </label>
-                                        <input type="file" accept="image/*,video/*" @change="changeProductFileEdit($event, ${i})" data-url="'${this.files[i].url}'" data-uid="'${this.files[i].uid}'" name="file" id="product-files-edit-${i}" style="display:none">     
+                                        <input type="file" accept="image/*,video/*" @change="changeProductFileEdit($event, ${i})" data-url="${this.files[i].url}" data-uid="${this.files[i].uid}" name="file" id="product-files-edit-${i}" style="display:none">     
                                     </form>
                                 `)
                             }

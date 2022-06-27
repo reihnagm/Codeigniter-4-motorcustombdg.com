@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
+
 use Config\Services;
 use Config\Database;
 
@@ -61,7 +62,7 @@ class ProductController extends BaseController {
                 $data[] = $nestedData;
             }
             
-            $hasNext = $resultTotal > 10 ? true : false;
+            $hasNext = $nextPage == $perPage ? true : false;
                         
             return $this->respond([
                 "code" => 200,

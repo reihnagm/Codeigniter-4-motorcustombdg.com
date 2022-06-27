@@ -98,3 +98,23 @@ in APPPATH/Views/products/detail.php on line 24.
  7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
  8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-26 20:23:18 --> Undefined offset: 0
+in APPPATH/Views/products/detail.php on line 8.
+ 1 APPPATH/Views/products/detail.php(8): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'APPPATH/Views/products/detail.php', 8, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/products/detail.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('products/detail', [], true)
+ 5 APPPATH/Controllers/ProductController.php(120): view('products/detail', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->detail('1-pertama')
+ 7 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-26 23:33:56 --> Undefined variable: totalTime
+in SYSTEMPATH/Debug/Toolbar/Views/toolbar.tpl.php on line 40.
+ 1 SYSTEMPATH/Debug/Toolbar/Views/toolbar.tpl.php(40): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: totalTime', 'SYSTEMPATH/Debug/Toolbar/Views/toolbar.tpl.php', 40, [...])
+ 2 SYSTEMPATH/Debug/Toolbar.php(509): include('SYSTEMPATH/Debug/Toolbar/Views/toolbar.tpl.php')
+ 3 SYSTEMPATH/Debug/Toolbar.php(472): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 4 APPPATH/Config/Events.php(46): CodeIgniter\Debug\Toolbar->respond()
+ 5 SYSTEMPATH/Events/Events.php(149): CodeIgniter\Events\Events::Config\{closure}()
+ 6 SYSTEMPATH/CodeIgniter.php(326): CodeIgniter\Events\Events::trigger('pre_system')
+ 7 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

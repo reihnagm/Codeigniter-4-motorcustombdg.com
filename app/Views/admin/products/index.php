@@ -33,9 +33,6 @@
                   <label class="product-files-label" for="product-files-<?= $i ?>">
                     <div id="wrapper-product-files">
                       <img id="preview-image-<?= $i ?>" src="https://via.placeholder.com/140" width="140">
-                      <video id="preview-video-<?= $i ?>" style="display:none;"  width="140" controls>
-                        Your browser does not support HTML video.
-                      </video>
                       <div class="products-files-remove" id="product-files-remove-<?= $i ?>"></div>
                     </div>
                   </label>
@@ -86,7 +83,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button @click="updateProduct()" type="button" class="btn btn-primary">Submit</button>
+          <button @click="updateProduct($event)" type="button" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>

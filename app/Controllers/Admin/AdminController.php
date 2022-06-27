@@ -137,7 +137,7 @@ class AdminController extends BaseController
                     unlink(FCPATH . $val->url);
                 }
                 $uid = $val->uid;
-                $db->query("DELETE FROM product_files WHERE uid = $uid");
+                $db->query("DELETE FROM product_files WHERE uid = '$uid'");
             }
             $db->transComplete();
             return $this->respond([
@@ -257,7 +257,7 @@ class AdminController extends BaseController
                     }
                     $url = 'public/web/'.$filename;
                     move_uploaded_file($_FILES["filesUpdate-".$i]["tmp_name"], $url);
-                    $db->query("REPLACE INTO product_files (uid, url, type, product_uid) VALUES($uid, '$url', '$type', '$productUid')");
+                    $db->query("REPLACE INTO product_files (uid, url, type, product_uid) VALUES('$uid', '$url', '$type', '$productUid')");
                 }
             }
         
