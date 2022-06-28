@@ -1,10 +1,6 @@
 <?php 
     use Config\Services;
-
-    $request = Services::request();
     $session = Services::session();
-
-    $segment = $request->uri->getSegment(1);
 ?>
 
 <section class="header">
@@ -19,8 +15,12 @@
                 <nav>
                     <ul id="MenuItems">
                         <li><a href="<?= base_url() ?>" class="text-white">HOME</a></li>
-                        <li><a href="#products" class="text-white">OUR PRODUCT</a></li>
-                        <li><a href="javascript:void(0)" class="text-white">ABOUT US</a></li>
+                        <?php if(uri_string() != "/about") { ?>
+                            <li><a href="<?= base_url() ?>/#products" class="text-white">OUR PRODUCT</a></li>
+                        <?php } else { ?>
+                            <li><a href="<?= base_url() ?>/#products" class="text-white">OUR PRODUCT</a></li>    
+                        <?php } ?>
+                        <li><a href="<?= base_url() ?>/about" class="text-white">ABOUT US</a></li>
                         <?php if($session->get("role") === "admin") { ?>
                             <li><a href="<?= base_url() ?>/admin"class="text-white">ADMIN</a></li>
                         <?php } ?>
@@ -34,9 +34,9 @@
                     </ul>
                 </nav>
             </div>
-            <?php if(uri_string() != "/auth") { ?>
+            <?php if(uri_string() != "/auth" && uri_string() != "/about") { ?>
                 <?= view('layouts/banner') ?>
-            <?php } else { ?> <?php } ?> 
+            <?php } ?> 
         </div>
     </div>
 </section>

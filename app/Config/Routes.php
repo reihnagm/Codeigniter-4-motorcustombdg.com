@@ -62,6 +62,10 @@ $routes->group('products', function($routes) {
     $routes->get('(:any)', 'ProductController::detail/$1', ['namespace' => 'App\Controllers']);
 });
 
+$routes->group('about', function($routes) {
+    $routes->get('/', 'AboutController::index', ['namespace' => 'App\Controllers']);
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
