@@ -194,10 +194,14 @@ class AdminController extends BaseController
                     case 'mp4':
                         $type = 2;
                     break;
+                    case 'mpeg':
+                        $type = 2;
+                    break;
                     default:
                     break;
                 }
-                $url = 'public/web/'.$filename;
+                $fileExtension = explode('.', $filename);
+                $url = 'public/web/'.uniqid().'.'.end($fileExtension);
                 move_uploaded_file($_FILES["file-".$i]["tmp_name"], $url);
                 $db->query("INSERT INTO product_files (uid, url, type, product_uid) 
                 VALUES('".uuidv4()."', '$url', '$type', '$productUid')");
@@ -252,10 +256,14 @@ class AdminController extends BaseController
                         case 'mp4':
                             $type = 2;
                         break;
+                        case 'mpeg':
+                            $type = 2;
+                        break;
                         default:
                         break;
                     }
-                    $url = 'public/web/'.$filename;
+                    $fileExtension = explode('.', $filename);
+                    $url = 'public/web/'.uniqid().'.'.end($fileExtension);
                     move_uploaded_file($_FILES["filesUpdate-".$i]["tmp_name"], $url);
                     $db->query("REPLACE INTO product_files (uid, url, type, product_uid) VALUES('$uid', '$url', '$type', '$productUid')");
                 }
@@ -264,7 +272,7 @@ class AdminController extends BaseController
             $title = $request->getPost("title");
             $description = $request->getPost("description");
             
-            $db->query("UPDATE products SET title ='$title', description = '$description'");
+            $db->query("UPDATE products SET title = '".$db->escapeString($title)."', description = '".$db->escapeString($description)."'");
 
             $db->transComplete();
 

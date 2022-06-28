@@ -6,6 +6,9 @@
             case "video/mp4":
                 return true;
             break;
+            case "video/mpeg":
+                return true;
+            break;
             case "image/png":
                 return false;
             break;
@@ -296,8 +299,8 @@
                 }
 
                 var fd = new FormData()
-                fd.append("title", title)
-                fd.append("description", description)
+                fd.append("title", title.trim())
+                fd.append("description", description.trim())
                 fd.append("filesRemove", JSON.stringify(this.removeFiles))
                 fd.append("filesCount", filesEdit.length)
                 for (var i = 0; i < filesEdit.length; i++) {
@@ -340,6 +343,7 @@
                         location.reload()
                     },
                     error: function(data) {
+                        $(e.target).text("Submit")
                         Swal.fire({
                             icon: 'info',
                             title: `<h6>There was problem!</h6>`,
@@ -519,8 +523,8 @@
                 } 
 
                 var fd = new FormData()
-                fd.append("title", title)
-                fd.append("description", description)
+                fd.append("title", title.trim())
+                fd.append("description", description.trim())
                 fd.append('filesCount', files.length)
                 for (var i = 0; i < files.length; i++) {
                     fd.append(`file-${i}`, files[i][0])

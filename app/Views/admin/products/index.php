@@ -26,7 +26,7 @@
             <textarea class="form-control" id="description"></textarea>
           </div>
           <div class="form-group">
-            <label for="max-upload">Min upload 2 Images & Videos (5 MB):</label>
+            <label for="max-upload">Min upload 2 Images & Videos (10 MB):</label>
             <div style="margin: 10px 0px; display: flex;">
               <?php for($i = 0; $i < 5; $i++): ?> 
                 <form id="form-preview-files-<?= $i ?>" style="margin: 0px 4px 0px 4px;">
@@ -76,7 +76,7 @@
               <textarea class="form-control" id="description-edit"></textarea>
             </div>
             <div class="form-group">
-              <label for="max-upload">Min upload 2 Images & Videos (5 MB):</label>
+              <label for="max-upload">Min upload 2 Images & Videos (10 MB):</label>
               <div class="wrapper-preview-files-edited" style="margin: 10px 0px; display: flex;"></div>
             </div>
           </form>
