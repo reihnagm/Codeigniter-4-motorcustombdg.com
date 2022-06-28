@@ -19,7 +19,7 @@
                 <nav>
                     <ul id="MenuItems">
                         <li><a href="<?= base_url() ?>" class="text-white">HOME</a></li>
-                        <li><a href="javascript:void(0)" class="text-white">OUR PRODUCT</a></li>
+                        <li><a href="#products" class="text-white">OUR PRODUCT</a></li>
                         <li><a href="javascript:void(0)" class="text-white">ABOUT US</a></li>
                         <?php if($session->get("role") === "admin") { ?>
                             <li><a href="<?= base_url() ?>/admin"class="text-white">ADMIN</a></li>

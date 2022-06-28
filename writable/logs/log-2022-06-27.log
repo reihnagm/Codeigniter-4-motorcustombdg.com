@@ -57,3 +57,14 @@ in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
  6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
  7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-06-27 19:53:38 --> Deadlock found when trying to get lock; try restarting transaction
+CRITICAL - 2022-06-27 19:53:38 --> Deadlock found when trying to get lock; try restarting transaction
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('DELETE FROM product_files WHERE uid = \'baf05d03-0cfd-47a6-ae09-4d969755ae36\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM product_files WHERE uid = \'baf05d03-0cfd-47a6-ae09-4d969755ae36\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM product_files WHERE uid = \'baf05d03-0cfd-47a6-ae09-4d969755ae36\'')
+ 4 APPPATH/Controllers/Admin/AdminController.php(140): CodeIgniter\Database\BaseConnection->query('DELETE FROM product_files WHERE uid = \'baf05d03-0cfd-47a6-ae09-4d969755ae36\'')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->filesDelete('judul-1')
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

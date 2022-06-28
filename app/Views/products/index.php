@@ -3,7 +3,7 @@
 ?>
 
 
-<section class="small-container"
+<section id="products" class="small-container"
     x-data="productsInstance()" 
     x-init="getProducts()">
     <h2 class="title">Featured Products</h2>
