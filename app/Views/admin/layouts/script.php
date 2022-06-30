@@ -61,7 +61,7 @@
         
             },
             error: function(data) {
-                alert(data)
+                console.log(data)
             }
         });
     }

@@ -25,6 +25,5 @@
         </div>
     </section>
 
-</body>
-
-<!-- https://wa.me/6289670558381?text=Saya%20tertarik%20dengan%20mobil%20Anda%20yang%20dijual -->
+    </body>
+</html>

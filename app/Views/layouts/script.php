@@ -22,36 +22,46 @@
 <!-- SweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!--  Animejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+
+<!-- Owljs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+
 <script>
-    var MenuItems = document.getElementById("MenuItems");
-    MenuItems.style.maxHeight = "0px";
-    function menutoggle() {
-        if (MenuItems.style.maxHeight == "0px") {
-            MenuItems.style.maxHeight = "200px"
-        }
-        else {
-            MenuItems.style.maxHeight = "0px"
-        }
-    }
-    var LoginForm = document.getElementById("LoginForm")
-    var RegForm = document.getElementById("RegForm")
-    var Indicator = document.getElementById("Indicator")
+    // var MenuItems = document.getElementById("MenuItems");
+    // MenuItems.style.maxHeight = "0px";
+    // function menutoggle() {
+    //     if (MenuItems.style.maxHeight == "0px") {
+    //         MenuItems.style.maxHeight = "200px"
+    //     }
+    //     else {
+    //         MenuItems.style.maxHeight = "0px"
+    //     }
+    // }
+    // var LoginForm = document.getElementById("LoginForm")
+    // var RegForm = document.getElementById("RegForm")
+    // var Indicator = document.getElementById("Indicator")
     
-    <?php if($segment == "auth") { ?>
-        Indicator.style.transform = "translate(0px)"
-        LoginForm.style.transform = "translatex(300px)"
-        RegForm.style.transform = "translatex(300px)"
-    <?php } ?>
-    function register() {
-        RegForm.style.transform = "translatex(0px)"
-        LoginForm.style.transform = "translatex(0px)"
-        Indicator.style.transform = "translatex(100px)"
-    }
-    function login() {
-        RegForm.style.transform = "translatex(300px)"
-        LoginForm.style.transform = "translatex(300px)"
-        Indicator.style.transform = "translate(0px)"
-    }
+    // <?php if($segment == "auth") { ?>
+    //     Indicator.style.transform = "translate(0px)"
+    //     LoginForm.style.transform = "translatex(300px)"
+    //     RegForm.style.transform = "translatex(300px)"
+    // <?php } ?>
+    // function register() {
+    //     RegForm.style.transform = "translatex(0px)"
+    //     LoginForm.style.transform = "translatex(0px)"
+    //     Indicator.style.transform = "translatex(100px)"
+    // }
+    // function login() {
+    //     RegForm.style.transform = "translatex(300px)"
+    //     LoginForm.style.transform = "translatex(300px)"
+    //     Indicator.style.transform = "translate(0px)"
+    // }
 
     var productImg = $("#productImg")
 
@@ -319,6 +329,40 @@
             }
         }
     }
-    
 
+    var mainListDiv = document.getElementById("mainListDiv");
+    mediaButton = document.getElementById('mediaButton');
+
+    mediaButton.onclick = function() {
+      mainListDiv.classList.toggle('show_list');
+      mediaButton.classList.toggle('active');
+    }
+
+    anime({
+      targets: '.ani_image',
+      translateX: 70,
+      loop: true,
+      direction: 'alternate',
+      easing: 'easeInOutSine'
+    })
+
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      dots: false,
+      navText: ["<i class='far fa-chevron-left'></i>", "<i class='far fa-chevron-right'></i>"],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 1
+        },
+        1000: {
+          items: 1
+        }
+      }
+    })
+    
 </script>
