@@ -1,0 +1,147 @@
+CRITICAL - 2022-07-02 09:24:20 --> Invalid file: home/indexv2.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('home/indexv2.php')
+ 2 SYSTEMPATH/Common.php(1135): CodeIgniter\View\View->render('home/indexv2', [], true)
+ 3 APPPATH/Controllers/Home.php(11): view('home/indexv2')
+ 4 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-02 09:30:07 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+CRITICAL - 2022-07-02 09:30:07 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(22): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-02 09:33:38 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+CRITICAL - 2022-07-02 09:33:38 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(22): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-02 09:33:42 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+CRITICAL - 2022-07-02 09:33:42 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(22): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-02 09:34:04 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+CRITICAL - 2022-07-02 09:34:04 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(22): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-02 09:34:07 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+CRITICAL - 2022-07-02 09:34:07 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(22): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-02 09:34:08 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+CRITICAL - 2022-07-02 09:34:08 --> Expression #9 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'motorcustombdg.u.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 4 APPPATH/Controllers/ProductController.php(22): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
+            GROUP BY p.uid')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

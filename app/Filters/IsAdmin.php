@@ -17,6 +17,6 @@ class isAdmin implements FilterInterface
   {
     if (session('authenticated') && session('role') != 'admin') {
       return redirect()->to(base_url());
-    }
+    } 
   }
 }

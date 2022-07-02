@@ -8,6 +8,6 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('home/indexv2');
+        return view('home/index');
     }
 }

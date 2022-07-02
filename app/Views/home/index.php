@@ -1,9 +1,13 @@
-<?= view('layouts/head'); ?>
+<?= view('layouts/head') ?>
 
-<?= view('layouts/header'); ?>
+<?= view('layouts/nav') ?>
+ 
+<?= view('layouts/banner') ?>
 
-<?= view('products/index'); ?>
+<?= view('products/index') ?>
 
-<?= view('layouts/footer'); ?>
+<?= view('about/index') ?>
 
-<?= view('layouts/script'); ?>
+<?= view('layouts/footer') ?>
+
+<?= view('layouts/script') ?>

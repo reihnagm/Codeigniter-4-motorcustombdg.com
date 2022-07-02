@@ -175,6 +175,9 @@
                 title: `<h6>There was problem</h6>`,
                 text: '',
                 showConfirmButton: true,
+                preConfirm: (_) => {
+                    location.reload()
+                },
             })
             $(this).text("Login")
         }
@@ -245,6 +248,9 @@
                 title: `<h6>There was problem</h6>`,
                 text: '',
                 showConfirmButton: true,
+                preConfirm: (_) => {
+                    location.reload()
+                },
             })
             $(this).text("Register")
         }
@@ -297,6 +303,9 @@
                             title: `<h6>There was problem</h6>`,
                             text: '',
                             showConfirmButton: true,
+                            preConfirm: (_) => {
+                                location.reload()
+                            },
                         })
                     }
                 })
@@ -322,6 +331,9 @@
                                 title: `<h6>There was problem</h6>`,
                                 text: '',
                                 showConfirmButton: true,
+                                preConfirm: (_) => {
+                                    location.reload()
+                                },
                             })
                         }
                     }).catch((_) => {})
