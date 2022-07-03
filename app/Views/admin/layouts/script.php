@@ -45,14 +45,14 @@
                     `)
                     if(data.files[key].type == "image") {
                         containerCarouselInner.append(`
-                            <div class="carousel-item ${i == 0 ? "active" : ""}" style="height: 350px; position: relative;">
+                            <div class="carousel-item ${i == 0 ? "active" : ""}">
                                 <img class="d-block" style="width: 50%; margin: auto;" src='${baseUrl}/${data.files[key].url}' alt='${baseUrl}/${data.files[key].url}'>
                             </div>
                         `) 
                     } else {
                         containerCarouselInner.append(`
                             <div class="carousel-item ${i == 0 ? "active" : ""}">
-                                <video src='${baseUrl}/${data.files[key].url}' style="height: 350px;" controls> </video>
+                                <video class="d-block" src='${baseUrl}/${data.files[key].url}' style="width: 50%; margin: auto;" controls> </video>
                             </div>
                         `) 
                     }

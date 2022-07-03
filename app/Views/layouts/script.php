@@ -7,7 +7,10 @@
     $segment = $request->uri->getSegment(1);
 ?>
 
-<!-- Alpine JS -->
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Alpine -->
 <script src="https://unpkg.com/alpinejs" defer></script>
 
 <!-- JQuery -->
@@ -287,15 +290,14 @@
             page: 1,
             hasNext: false,
             products: [],
-            getProducts() {
+            async getProducts() {
                 this.loading = true
-                fetch(`<?= base_url() ?>/products/init-products?page=${this.page}`)
-                .then((response) => response.json())
-                .then((json) => {
-                    var res = json
-                    if(res.code == 200) {
-                        this.products = res.data
-                        this.hasNext = res.hasNext
+                try {
+                    var res = await fetch(`<?= base_url() ?>/products/init-products?page=${this.page}`)
+                    var data = await res.json()
+                    if(data.code == 200) {
+                        this.products = data.data
+                        this.hasNext = data.hasNext
                         this.loading = false
                     } else {
                         Swal.fire({
@@ -308,35 +310,42 @@
                             },
                         })
                     }
-                })
-                .catch((_) => {})
+                }
+                catch(_) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: `<h6>There was problem</h6>`,
+                        text: '',
+                        showConfirmButton: true,
+                        preConfirm: (_) => {
+                            location.reload()
+                        },
+                    })
+                }
             },
             productDetail(slug) {
                 location.href = `<?= base_url() ?>/products/${slug}`
             },
-            loadMoreProducts() {
+            async loadMoreProducts() {
                 if(this.hasNext) {
                     this.page += 1
-                    fetch(`<?= base_url() ?>/products/init-products?page=${this.page}`)
-                    .then((response) => response.json())
-                    .then((json) => {
-                        var res = json
-                        if(res.code == 200) {
-                            this.products = this.products.concat(res.data);
-                            this.hasNext = res.hasNext
-                            this.loading = false
-                        } else {
-                            Swal.fire({
-                                icon: 'info',
-                                title: `<h6>There was problem</h6>`,
-                                text: '',
-                                showConfirmButton: true,
-                                preConfirm: (_) => {
-                                    location.reload()
-                                },
-                            })
-                        }
-                    }).catch((_) => {})
+                    var res = fetch(`<?= base_url() ?>/products/init-products?page=${this.page}`)
+                    var data = await res.json()
+                    if(data.code == 200) {
+                        this.products = this.products.concat(data.data);
+                        this.hasNext = data.hasNext
+                        this.loading = false
+                    } else {
+                        Swal.fire({
+                            icon: 'info',
+                            title: `<h6>There was problem</h6>`,
+                            text: '',
+                            showConfirmButton: true,
+                            preConfirm: (_) => {
+                                location.reload()
+                            },
+                        })
+                    }
                 } 
             }
         }

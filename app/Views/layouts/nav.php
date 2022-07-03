@@ -1,3 +1,8 @@
+<?php 
+    use Config\Services;
+    $session = Services::session();
+?>
+
 <nav class="nav">
     <div class="container flex1">
         <div class="logo-nav">
@@ -6,18 +11,33 @@
         <div class="menu">
             <div class="main_list" id="mainListDiv">
                 <ul>
-                <li> <a href="#our-product">Our Product</a> </li>
-                <li> <a href="#about-us">About Us</a> </li>
+                <?php if(uri_string() == "/auth" || strtolower(explode('/', uri_string())[1]) == "products") { ?>
+                    <li> <a href="<?= base_url() ?>/#our-product">Our Product</a> </li>
+                <?php } else { ?>
+                    <li> <a href="#our-product">Our Product</a> </li>
+                <?php } ?>
+                <?php if(uri_string() == "/auth" || strtolower(explode('/', uri_string())[1]) == "products") { ?>
+                    <li> <a href="<?= base_url() ?>/#about-us">About Us</a> </li>
+                <?php } else { ?>
+                    <li> <a href="#about-us">About Us</a> </li>
+                <?php } ?>
                 </ul>
             </div>
         </div>
-            <div class="media_button">
-                <i class="fas fa-bars" id="mediaButton"></i>
-            </div>
-            <div class="account flex1">
+        <div class="media_button">
+            <i class="fas fa-bars" id="mediaButton"></i>
+        </div>
+        <div class="account flex1">
+            <?php if($session->get("authenticated")) { ?>
                 <ul>
-                    <li> <a href="<?= base_url() ?>">Login / Register</a> </li>
+                    <li> <a href="<?= base_url() ?>/admin">Admin</a> </li>
+                    <li> <a id="logout-btn" href="javascript:void(0)">Logout</a> </li>
                 </ul>
-            </div>
+            <?php } else { ?>
+                <ul>
+                    <li> <a href="<?= base_url() ?>/auth">Login / Register</a> </li>
+                </ul>
+            <?php } ?>
+        </div>
     </div>
 </nav>

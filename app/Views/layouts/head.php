@@ -10,7 +10,9 @@
     <meta name="description" content="Motor Custom Bandung" />
     <meta name="keywords" content="Kami menjual berbagai aksesoris & spare part untuk motor kesayangan Anda" />
     <meta name="author" content="Motor Custom Bandung" />
-    <link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/style.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- Google Font Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -21,6 +23,8 @@
     <!-- Owl -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/responsive.css">
 </head>
 
 <body>

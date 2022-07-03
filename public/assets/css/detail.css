@@ -1,82 +1,3 @@
-/*
-    Table of Contents
-
-    Name                 : FILLOW
-    Author               : DexignZone
-    Author Portfolio     : https://themeforest.net/user/dexignzone/portfolio
-    
-
-
-    Table of Sass Contents
-
-    1. Abstracts
-        _bs-custom
-        _inheritance
-        _maps
-        _mixin
-        _variable
-
-    2. bootstrap 
-        -Here goes all official bootstrap scss files
-
-    3. Global/Base
-        _color
-        _custom-grid
-        _fonts
-        _helper
-        _reset
-
-    4. layout
-        +footer
-        +header
-        +rtl
-        +sidebar
-        +tables
-        +theme
-        +version-dark
-
-    5. Conponents
-        +app
-        +charts
-        +forms
-        +map
-        +uc
-        +ui
-        +widget
-
-    6. Page
-        _index-1
-        _page-error
-        _page-register
-        _page-signin
-        _page-user-lock
-        _page-user-lock
-
-*/
-@import url(../vendor/animate/animate.min.css);
-@import url(../vendor/aos/css/aos.min.css);
-@import url(../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
-@import url(../vendor/metismenu/css/metisMenu.min.css);
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 .gradient_one {
   background-image: linear-gradient(to right, rgba(186, 1, 181, 0.85) 0%, rgba(103, 25, 255, 0.85) 100%); }
@@ -260,14 +181,12 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.5;
   color: #393939;
   background-color: #F8F8F8;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -289,36 +208,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   line-height: 1.2;
   color: #000; }
 
-h1, .h1 {
-  font-size: calc(1.35rem + 1.2vw); }
-  @media (min-width: 1200px) {
-    h1, .h1 {
-      font-size: 2.25rem; } }
 
-h2, .h2 {
-  font-size: calc(1.3125rem + 0.75vw); }
-  @media (min-width: 1200px) {
-    h2, .h2 {
-      font-size: 1.875rem; } }
 
-h3, .h3 {
-  font-size: calc(1.275rem + 0.3vw); }
-  @media (min-width: 1200px) {
-    h3, .h3 {
-      font-size: 1.5rem; } }
-
-h4, .h4 {
-  font-size: 1.125rem; }
-
-h5, .h5 {
-  font-size: 1rem; }
-
-h6, .h6 {
-  font-size: 0.938rem; }
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem; }
 
 abbr[title],
 abbr[data-bs-original-title] {
@@ -587,54 +478,6 @@ progress {
   font-size: 1.09375rem;
   font-weight: 300; }
 
-.display-1 {
-  font-size: calc(1.625rem + 4.5vw);
-  font-weight: 300;
-  line-height: 1.2; }
-  @media (min-width: 1200px) {
-    .display-1 {
-      font-size: 5rem; } }
-
-.display-2 {
-  font-size: calc(1.575rem + 3.9vw);
-  font-weight: 300;
-  line-height: 1.2; }
-  @media (min-width: 1200px) {
-    .display-2 {
-      font-size: 4.5rem; } }
-
-.display-3 {
-  font-size: calc(1.525rem + 3.3vw);
-  font-weight: 300;
-  line-height: 1.2; }
-  @media (min-width: 1200px) {
-    .display-3 {
-      font-size: 4rem; } }
-
-.display-4 {
-  font-size: calc(1.475rem + 2.7vw);
-  font-weight: 300;
-  line-height: 1.2; }
-  @media (min-width: 1200px) {
-    .display-4 {
-      font-size: 3.5rem; } }
-
-.display-5 {
-  font-size: calc(1.425rem + 2.1vw);
-  font-weight: 300;
-  line-height: 1.2; }
-  @media (min-width: 1200px) {
-    .display-5 {
-      font-size: 3rem; } }
-
-.display-6 {
-  font-size: calc(1.375rem + 1.5vw);
-  font-weight: 300;
-  line-height: 1.2; }
-  @media (min-width: 1200px) {
-    .display-6 {
-      font-size: 2.5rem; } }
-
 .list-unstyled {
   padding-left: 0;
   list-style: none; }
@@ -689,7 +532,6 @@ progress {
   font-size: 0.875em;
   color: #6c757d; }
 
-.container,
 .container-fluid,
 .container-sm,
 .container-md,
@@ -703,19 +545,19 @@ progress {
   margin-left: auto; }
 
 @media (min-width: 576px) {
-  .container, .container-sm {
+  .container-sm {
     max-width: 540px; } }
 @media (min-width: 768px) {
-  .container, .container-sm, .container-md {
+  .container-sm, .container-md {
     max-width: 720px; } }
 @media (min-width: 992px) {
-  .container, .container-sm, .container-md, .container-lg {
+  .container-sm, .container-md, .container-lg {
     max-width: 960px; } }
 @media (min-width: 1200px) {
-  .container, .container-sm, .container-md, .container-lg, .container-xl {
+  .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px; } }
 @media (min-width: 1440) {
-  .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+  .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
     max-width: 1320px; } }
 .row {
   --bs-gutter-x: 30px;
@@ -3286,7 +3128,6 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
-  .navbar > .container,
   .navbar > .container-fluid,
   .navbar > .container-sm,
   .navbar > .container-md,
@@ -8504,18 +8345,13 @@ textarea.form-control-lg {
   color: #fff;
   background: var(--primary); }
 
-@media only screen and (max-width: 100rem) {
-  :root {
-    font-size: 14px; } }
 body {
   overflow-x: hidden;
   height: 100%;
   position: relative;
   max-width: 100%;
-  font-size: 0.875rem; }
-  @media only screen and (max-width: 61.9375rem) {
-    body {
-      font-size: 0.875rem; } }
+ }
+
 
 p {
   line-height: 1.8; }
@@ -8681,8 +8517,6 @@ h1, .h1, .h1, h2, .h2, .h2, h3, .h3, .h3, h4, .h4, .h4, h5, .h5, .h5, h6, .h6, .
 .w-space-no {
   white-space: nowrap; }
 
-.content-body .container {
-  margin-top: 2.5rem; }
 .content-body .container-fluid, .content-body .container-sm, .content-body .container-md, .content-body .container-lg, .content-body .container-xl, .content-body .container-xxl {
   padding-top: 2.5rem;
   padding-right: 2.5rem;
@@ -12171,9 +12005,6 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 .content-body {
   z-index: 0;
   transition: all .2s ease; }
-  @media only screen and (max-width: 87.5rem) {
-    .content-body {
-      margin-left: 17rem; } }
 
 .bell img {
   -webkit-animation: ring 8s .7s ease-in-out infinite;
@@ -12769,37 +12600,6 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   max-height: 18.125rem;
   width: 50vw; }
 
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
-
-/*
-0 - 600: Phone
-600 - 900: Tablet portrait
-900 - 1200: Tablet landscape
-1200 - 1800: Normal styles
-1800+ : Big Desktop
-1em = 16px
-The smaller device rules always should write below the bigger device rules
-Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
-*/
 [data-sidebar-style="full"][data-layout="vertical"] .dlabnav .metismenu > li {
   padding: 0 1.25rem 0 0; }
   [data-sidebar-style="full"][data-layout="vertical"] .dlabnav .metismenu > li > a {
@@ -12989,26 +12789,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 The smaller device rules always should write below the bigger device rules
 Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
 */
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
+
 
 @media only screen and (min-width: 48rem) {
   [data-sidebar-style="mini"] .nav-header {
@@ -13227,26 +13008,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     height: auto !important; }
   [data-sidebar-style="mini"] .dlabnav li a.has-arrow::after {
     transform: rotate(-45deg) translateY(-50%); } }
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 @media (min-width: 64rem) {
   [data-layout="horizontal"] .nav-header {
@@ -17626,41 +17387,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --rgba-primary-8: rgba(76, 179, 43, 0.8);
   --rgba-primary-9: rgba(76, 179, 43, 0.9); }
 
-[data-typography="opensans"] {
-  font-family: 'Open Sans', sans-serif; }
 
-[data-typography="poppins"] {
-  font-family: 'poppins', sans-serif; }
-
-[data-typography="Nunito"] {
-  font-family: 'Nunito Sans', sans-serif; }
-
-[data-typography="roboto"] {
-  font-family: 'Roboto', sans-serif; }
-
-[data-typography="helvetica"] {
-  font-family: 'HelveticaNeue'; }
-
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 [data-theme-version="transparent"] {
   background: url("../images/body/12.jpg");
@@ -17770,27 +17497,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     background-color: rgba(0, 0, 0, 0.15) !important; }
   [data-theme-version="transparent"] .dlabnav .metismenu .has-arrow:after {
     border-color: transparent transparent rgba(0, 0, 0, 0.15) transparent; }
-
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 [data-theme-version="dark"] {
   background: #161717;
@@ -19794,27 +19500,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   border: 0;
   height: auto; }
 
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
-
 /* input[type="checkbox"] {
     &:after{
         content: '';
@@ -20273,27 +19958,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .swal2-popup .swal2-content {
   color: #393939; }
 
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
-
 /*
 0 - 600: Phone
 600 - 900: Tablet portrait
@@ -20525,53 +20189,11 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   border-top-right-radius: 0;
   border-bottom-right-radius: 0; }
 
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
-
 .clipboard-btn {
   transition: all .1s ease-in-out; }
   .clipboard-btn:hover {
     background-color: var(--primary);
     color: #fff; }
-
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 .bootstrap-tagsinput {
   flex: 1;
@@ -20594,27 +20216,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     border-color: #f5f5f5; }
   .bootstrap-tagsinput label {
     margin-bottom: .5rem; }
-
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 .twitter-typeahead {
   width: 100%; }
@@ -20649,27 +20250,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .weather-one .celcious {
   text-align: right;
   font-size: 2rem; }
-
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 .noUi-target {
   border-color: transparent;
@@ -24036,69 +23616,7 @@ code {
   .widget-timeline.style-1 .timeline .timeline-badge.dark + .timeline-panel:after {
     background: #6e6e6e; }
 
-#chart_widget_4 {
-  height: 15.9375rem !important; }
 
-#chart_widget_5 .ct-series-a .ct-line,
-#chart_widget_5 .ct-series-a .ct-point {
-  stroke: #46ffc8; }
-#chart_widget_5 .ct-line {
-  stroke-width: 0.0625rem; }
-#chart_widget_5 .ct-point {
-  stroke-width: 0.125rem; }
-#chart_widget_5 .ct-series-a .ct-area {
-  fill: #20dea6; }
-#chart_widget_5 .ct-area {
-  fill-opacity: 1; }
-
-#chart_widget_6 .ct-series-a .ct-line,
-#chart_widget_6 .ct-series-a .ct-point {
-  stroke: #D653C1; }
-#chart_widget_6 .ct-line {
-  stroke-width: 0.125rem; }
-#chart_widget_6 .ct-point {
-  stroke-width: 0.3125rem; }
-#chart_widget_6 .ct-series-a .ct-area {
-  fill: #D653C1; }
-#chart_widget_6 .ct-area {
-  fill-opacity: .5; }
-
-#chart_widget_8 {
-  height: 15.9375rem; }
-  #chart_widget_8 .ct-series-a .ct-line,
-  #chart_widget_8 .ct-series-a .ct-point {
-    stroke: #D653C1; }
-  #chart_widget_8 .ct-line {
-    stroke-width: 0.125rem; }
-  #chart_widget_8 .ct-point {
-    stroke-width: 0.3125rem; }
-  #chart_widget_8 .ct-series-a .ct-area {
-    fill: #D653C1; }
-  #chart_widget_8 .ct-area {
-    fill-opacity: .5; }
-
-#chart_widget_9, #chart_widget_10 {
-  height: 15.625rem !important; }
-
-#chart_widget_11 .ct-slice-donut, #chart_widget_12 .ct-slice-donut, #chart_widget_13 .ct-slice-donut {
-  stroke-width: 1.5625rem !important; }
-
-#chart_widget_11 {
-  height: 16.875rem !important; }
-
-#chart_widget_17 {
-  height: 9.375rem !important; }
-
-.chart_widget_tab_one .nav-link {
-  border: 0.0625rem solid #ddd; }
-  .chart_widget_tab_one .nav-link.active {
-    background-color: var(--primary);
-    border: 0.0625rem solid var(--primary);
-    color: #fff; }
-    .chart_widget_tab_one .nav-link.active:hover {
-      border: 0.0625rem solid var(--primary); }
-  .chart_widget_tab_one .nav-link:hover {
-    border: 0.0625rem solid #ddd; }
 
 [data-theme-version="dark"] .ccc-widget > div {
   background: #202020 !important;
@@ -28521,27 +28039,6 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="mini"]:not([data-layout="h
   padding-right: 3.75rem; }
 html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout="horizontal"]) .footer {
   padding-right: 9.375rem; }
-
-:root {
-  --primary: #886CC0;
-  --secondary: #FFA7D7;
-  --primary-light: #a590cf;
-  --primary-hover: #6c4bae;
-  --primary-dark: #402c67;
-  --rgba-primary-1: rgba(136, 108, 192, 0.1);
-  --rgba-primary-2: rgba(136, 108, 192, 0.2);
-  --rgba-primary-3: rgba(136, 108, 192, 0.3);
-  --rgba-primary-4: rgba(136, 108, 192, 0.4);
-  --rgba-primary-5: rgba(136, 108, 192, 0.5);
-  --rgba-primary-6: rgba(136, 108, 192, 0.6);
-  --rgba-primary-7: rgba(136, 108, 192, 0.7);
-  --rgba-primary-8: rgba(136, 108, 192, 0.8);
-  --rgba-primary-9: rgba(136, 108, 192, 0.9);
-  --font-family-base: Roboto, sans-serif;
-  --font-family-title: Roboto, sans-serif;
-  --title: #000;
-  --gradient-one: linear-gradient(180deg, #FFA26D 0%, #FFCF6D 100%);
-  --tryal-gradient:linear-gradient(212.43deg, #886CC0 19.43%, #AA6CC0 87.63%); }
 
 [data-theme-version="dark"] {
   background: #161717;

@@ -23,6 +23,10 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .center {
+    text-align: center;
+  }
   
   /*----------header--------*/
   nav {
@@ -70,7 +74,7 @@
       width: 100%;
       position: absolute;
       left: 0;
-      top: 10%;
+      top: 15%;
       padding: 0 0 0 40px;
       transition: 0.5s;
     }
@@ -414,8 +418,8 @@
   }
   
   .wrapper .text {
-    padding: 100px 50px;
-    color: white;
+    padding: 50px 50px;
+    color: #ffffff;
   }
   
   .wrapper h1 {
@@ -429,51 +433,19 @@
     margin-bottom: 30px;
     font-weight: 400;
   }
-  
-  /*----------wrapper--------*/
-  /*----------Assesories--------*/
-  .Assesories {
-    margin-top: 25%;
-  }
-  
-  /*----------Assesories--------*/
-  /*----------shipping--------*/
-  .shipping {
-    padding: 50px;
-    background: #37B234;
-    color: white;
-  }
-  
-  .shipping .img {
-    border: 1px solid white;
-    border-radius: 50%;
-    text-align: center;
-    margin-right: 20px;
-    padding: 30px;
-  }
-  
-  .shipping i {
-    font-size: 20px;
-  }
-  
-  .shipping h3 {
-    font-weight: 400;
-    margin-bottom: 10px;
-  }
-  
-  .shipping p {
-    opacity: 0.8;
-    line-height: 20px;
-  }
-  
-  /*----------shipping--------*/
+ 
   /*----------footer--------*/
   footer {
-    background: black;
+    background: #000000;
+    padding: 30px 0;
+  }
+
+  footer img {
+    width: 170px;
   }
   
   footer .scontainer {
-    padding: 70px 50px;
+    padding: 30px 0;
     color: white;
   }
   
@@ -491,21 +463,6 @@
     margin: 15px 0 10px 0;
     color: grey;
     text-align: center;
-  }
-  
-  footer input {
-    padding: 10px;
-    background: none;
-    border: none;
-  }
-  
-  footer .input {
-    background: rgba(255, 255, 255, 0.1);
-    margin-bottom: 20px;
-  }
-  
-  footer .input i {
-    margin: 15px;
   }
   
   footer .social_media i {
@@ -600,12 +557,15 @@
       left: 20%;
     }
   
-    footer .scontainer,
-    .latest .scontainer {
-      padding: 0;
-    }
-  
     .shipping {
       padding: 50px 0 50px 0;
     }
   }
+
+
+.nav-pills .nav-link {
+  background: 0 0;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: .25rem;
+}

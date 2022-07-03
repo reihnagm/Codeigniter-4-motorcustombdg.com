@@ -1,6 +1,6 @@
 <?= view('layouts/head'); ?>
 
-<?= view('layouts/header'); ?>
+<?= view('layouts/nav'); ?>
 
 <?= view('layouts/account'); ?>
 

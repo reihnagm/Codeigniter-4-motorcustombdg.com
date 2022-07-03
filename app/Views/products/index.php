@@ -6,73 +6,39 @@
         <h1>OUR PRODUCTS</h1>
       </div>
 
+      <template x-if="loading">
+        <div class="center">
+          <h3>Mohon Tunggu, sedang memuat data...</h3>
+        </div>
+      </template>
+      <template x-if="!loading && products.length == 0">
+        <div class="center">
+          <h3>Produk belum ada</h3>
+        </div>
+      </template>
+
       <div class="content grid top">
-        <div class="box">
-          <div class="img">
-            <img src="<?= base_url() ?>/public/assets/imagesv2/l1.png" alt="">
+        <template x-for="product in products">
+          <div @click="productDetail(product.slug)" class="box">
+            <div class="img">
+              <template x-if="product.files[0].type == 'image'">
+                <img :src="product.files[0].url" width="180"> 
+              </template>
+              <template x-if="product.files[0].type == 'video'">
+                  <video :src="product.files[0].url" width="180" controls> </video>
+              </template>
+            </div>
+            <div class="detalis">
+              <h2 x-text="product.title.substring(0, 50) + '...'"></h2>
+              <button>Upload by : <span x-text="product.username"></span> </button>
+            </div>
           </div>
-
-          <div class="detalis">
-            <h3>Aerion Carrbo Helmet</h3>
-            <h2>Rp. 18.000.000</h2>
-            <button>Upload by : Admin</button>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="<?= base_url() ?>/public/assets/imagesv2/l2.png" alt="">
-          </div>
-
-          <div class="detalis">
-            <h3>Aerion Carrbo Helmet</h3>
-            <h2>Rp. 18.000.000</h2>
-            <button>Upload by : Admin</button>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="<?= base_url() ?>/public/assets/imagesv2/l3.png" alt="">
-          </div>
-
-          <div class="detalis">
-            <h3>Aerion Carrbo Helmet</h3>
-            <h2>Rp. 18.000.000</h2>
-            <button>Upload by : Admin</button>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="<?= base_url() ?>/public/assets/imagesv2/l4.png" alt="">
-          </div>
-
-          <div class="detalis">
-            <h3>Aerion Carrbo Helmet</h3>
-            <h2>Rp. 18.000.000</h2>
-            <button>Upload by : Admin</button>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="<?= base_url() ?>/public/assets/imagesv2/l5.png" alt="">
-          </div>
-
-          <div class="detalis">
-            <h3>Aerion Carrbo Helmet</h3>
-            <h2>Rp. 18.000.000</h2>
-            <button>Upload by : Admin</button>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="<?= base_url() ?>/public/assets/imagesv2/l6.png" alt="">
-          </div>
-
-          <div class="detalis">
-            <h3>Aerion Carrbo Helmet</h3>
-            <h2>Rp. 18.000.000</h2>
-            <button>Upload by : Admin</button>
-          </div>
-        </div>
+        </template>
+        <template x-if="hasNext">
+            <div class="d-flex justify-content-center"> 
+              <button type="submit" @click="loadMoreProducts()" class="btn-load-more center"> Load More </button>
+            </div>
+        </template>
       </div>
     </div>
 </section>
