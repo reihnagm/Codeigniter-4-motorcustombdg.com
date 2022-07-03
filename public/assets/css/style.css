@@ -19,14 +19,32 @@
     display: flex;
   }
   
-  .flex1 {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .center {
     text-align: center;
   }
+
+  .btn-load-more {
+    padding: 15px 50px;
+    margin: 20px 20px 0 0;
+    border-radius: 50px;
+    border: none;
+    background: rgb(254, 89, 0);
+    color: #ffffff;
+  }
+
+  body {
+    display:flex; 
+    flex-direction:column; 
+    height: 100vh; 
+    margin: 0;
+  }
+
+
+  /*----------account--------*/
+  .account {
+    padding: 30px 15px;
+  }
+
   
   /*----------header--------*/
   nav {
@@ -102,8 +120,8 @@
       cursor: pointer;
     }
   
-    .account {
-      display: none;
+    .auth-menu {
+      display: none !important;
     }
   }
 
@@ -121,16 +139,7 @@
     width: 65%;
     overflow-x: hidden;
   }
-  
-  button {
-    padding: 15px 50px;
-    margin: 20px 20px 0 0;
-    border-radius: 50px;
-    border: none;
-    background: rgb(254, 89, 0);
-    color: white;
-  }
-  
+    
   .btn1 {
     border: 2px solid white;
   }
@@ -321,8 +330,12 @@
   }
   
   .latest .detalis button {
-    margin: 0;
-    margin-top: 20px;
+    padding: 15px 50px;
+    margin: 20px 20px 0 0;
+    border-radius: 50px;
+    border: none;
+    background: rgb(254, 89, 0);
+    color: white;
   }
   
   /*----------latest--------*/
@@ -396,7 +409,7 @@
   .wrapper {
     background-image: url("../imagesv2/back.jpg");
     background-size: cover;
-    height: 65vh;
+    height: 60vh;
     width: 100%;
     text-align: center;
     position: relative;
@@ -408,7 +421,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 65vh;
+    height: 60vh;
     background: rgba(254, 89, 0, 0.83);
   }
   
@@ -438,17 +451,13 @@
   footer {
     background: #000000;
     padding: 30px 0;
+    margin-top:auto; 
   }
 
   footer img {
-    width: 170px;
+    width: 160px;
   }
-  
-  footer .scontainer {
-    padding: 30px 0;
-    color: white;
-  }
-  
+    
   footer h3 {
     margin: 30px 0 20px 0;
   }
@@ -540,32 +549,9 @@
     .home::after {
       height: 100vh;
     }
-  
-    .time_box {
-      display: none;
-    }
-  
     .grid {
       grid-template-columns: repeat(1, 1fr);
-    }
-  
-    .heading h1 {
-      font-size: 35px;
-    }
-  
-    .heading button {
-      left: 20%;
-    }
-  
-    .shipping {
-      padding: 50px 0 50px 0;
     }
   }
 
 
-.nav-pills .nav-link {
-  background: 0 0;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: .25rem;
-}

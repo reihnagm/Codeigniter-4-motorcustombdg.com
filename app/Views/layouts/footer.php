@@ -1,5 +1,5 @@
     <footer>
-      
+        <div class="container">
             <div id="box-img">
                 <img src="<?= base_url() ?>/public/assets/imagesv2/logo.png" style="display: block; margin: auto;"/>
             </div>
@@ -8,7 +8,7 @@
                 <i class="fab fa-whatsapp"></i>
                 </span> 
             </p>
-        
+        </div>
     </footer>
     </body>
 </html>

@@ -34,11 +34,18 @@
             </div>
           </div>
         </template>
-        <template x-if="hasNext">
-            <div class="d-flex justify-content-center"> 
-              <button type="submit" @click="loadMoreProducts()" class="btn-load-more center"> Load More </button>
-            </div>
-        </template>
       </div>
+      <template x-if="hasNext">
+          <div class="d-flex justify-content-center"> 
+            <template x-if="loadingMore">
+              <div class="center">
+                <h3>Mohon Tunggu, sedang memuat data...</h3>
+              </div>
+            </template>
+            <template x-if="!loadingMore">
+              <button type="submit" @click="loadMoreProducts()" class="btn btn-primary center"> Load More </button>
+            </template>
+          </div>
+      </template>
     </div>
 </section>

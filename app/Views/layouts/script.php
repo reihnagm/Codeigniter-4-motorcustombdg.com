@@ -287,6 +287,7 @@
         return {
             search: "",
             loading: false,
+            loadingMore: false,
             page: 1,
             hasNext: false,
             products: [],
@@ -298,7 +299,6 @@
                     if(data.code == 200) {
                         this.products = data.data
                         this.hasNext = data.hasNext
-                        this.loading = false
                     } else {
                         Swal.fire({
                             icon: 'info',
@@ -321,6 +321,8 @@
                             location.reload()
                         },
                     })
+                } finally {
+                    this.loading = false
                 }
             },
             productDetail(slug) {
@@ -329,13 +331,26 @@
             async loadMoreProducts() {
                 if(this.hasNext) {
                     this.page += 1
-                    var res = fetch(`<?= base_url() ?>/products/init-products?page=${this.page}`)
-                    var data = await res.json()
-                    if(data.code == 200) {
-                        this.products = this.products.concat(data.data);
-                        this.hasNext = data.hasNext
-                        this.loading = false
-                    } else {
+                    this.loadingMore = true
+                    try {
+                        var res = await fetch(`<?= base_url() ?>/products/init-products?page=${this.page}`)
+                        var data = await res.json()
+                        if(data.code == 200) {
+                            this.products = this.products.concat(data.data);
+                            this.hasNext = data.hasNext
+                            this.loading = false
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: `<h6>There was problem</h6>`,
+                                text: '',
+                                showConfirmButton: true,
+                                preConfirm: (_) => {
+                                    location.reload()
+                                },
+                            })
+                        }
+                    } catch(_) {
                         Swal.fire({
                             icon: 'info',
                             title: `<h6>There was problem</h6>`,
@@ -345,6 +360,8 @@
                                 location.reload()
                             },
                         })
+                    } finally {
+                        this.loadingMore = false
                     }
                 } 
             }
