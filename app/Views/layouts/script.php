@@ -171,7 +171,6 @@
                 })
                 location.href = baseUrl
             }
-            $(this).text("Register")
         } catch(_) {
             Swal.fire({
                 icon: 'info',
@@ -182,6 +181,7 @@
                     location.reload()
                 },
             })
+        } finally {
             $(this).text("Login")
         }
     })
@@ -244,7 +244,6 @@
                 })
                 location.href = baseUrl
             }
-            $(this).text("Register")
         } catch(_) {
             Swal.fire({
                 icon: 'info',
@@ -255,6 +254,7 @@
                     location.reload()
                 },
             })
+        } finally {
             $(this).text("Register")
         }
     })
@@ -285,7 +285,7 @@
 
     function productsInstance() {
         return {
-            search: "",
+            querySearchTitle: "",
             loading: false,
             loadingMore: false,
             page: 1,
@@ -325,6 +325,16 @@
                     this.loading = false
                 }
             },
+            filteredProducts() {
+                this.loading = true
+                fetch(`<?= base_url() ?>/products/init-products?page=${this.page}&title=${this.querySearchTitle}`)
+                .then(res => res.json())
+                .then(data => {
+                    this.products = data.data
+                    this.hasNext = data.hasNext
+                    this.loading = false
+                })
+             },
             productDetail(slug) {
                 location.href = `<?= base_url() ?>/products/${slug}`
             },
@@ -338,7 +348,6 @@
                         if(data.code == 200) {
                             this.products = this.products.concat(data.data);
                             this.hasNext = data.hasNext
-                            this.loading = false
                         } else {
                             Swal.fire({
                                 icon: 'info',

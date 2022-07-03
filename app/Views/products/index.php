@@ -1,19 +1,36 @@
 <section id="our-product"  
     x-data="productsInstance()" 
-    x-init="getProducts()" class="latest top">
+    x-init="getProducts()" 
+    class="latest top">
     <div class="scontainer">
       <div class="heading">
         <h1>OUR PRODUCTS</h1>
       </div>
 
-      <template x-if="loading">
-        <div class="center">
-          <h3>Mohon Tunggu, sedang memuat data...</h3>
+      <template x-if="!loading">
+        <div class="row justify-content-end">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="search" class="sr-only">Search</label>
+              <input @input.debounce.500ms="filteredProducts" type="search" class="form-control" id="search" placeholder="Search by Title"
+                x-ref="searchFieldProductTitle"
+                x-model="querySearchTitle"
+                x-on:keydown.window.prevent.slash="$refs.searchFieldProductTitle.focus()"  
+              >
+            </div>
+          </div>
         </div>
       </template>
+
       <template x-if="!loading && products.length == 0">
         <div class="center">
-          <h3>Produk belum ada</h3>
+          <h3 class="empty-data">Produk belum ada / tidak ditemukan</h3>
+        </div>
+      </template>
+
+      <template x-if="loading">
+        <div class="center">
+          <h3 class="progress-load-data">Mohon Tunggu, sedang memuat data...</h3>
         </div>
       </template>
 
@@ -35,17 +52,19 @@
           </div>
         </template>
       </div>
-      <template x-if="hasNext">
-          <div class="d-flex justify-content-center"> 
-            <template x-if="loadingMore">
-              <div class="center">
-                <h3>Mohon Tunggu, sedang memuat data...</h3>
-              </div>
-            </template>
-            <template x-if="!loadingMore">
-              <button type="submit" @click="loadMoreProducts()" class="btn btn-primary center"> Load More </button>
-            </template>
-          </div>
+      <template x-if="products.length != 0">
+        <template x-if="hasNext">
+            <div class="d-flex justify-content-center"> 
+              <template x-if="loadingMore">
+                <div class="center">
+                  <h3 class="progress-load-data">Mohon Tunggu, sedang memuat data...</h3>
+                </div>
+              </template>
+              <template x-if="!loadingMore">
+                <button type="submit" @click="loadMoreProducts()" class="btn btn-dark btn-load-more"> Load More </button>
+              </template>
+            </div>
+        </template>
       </template>
     </div>
 </section>

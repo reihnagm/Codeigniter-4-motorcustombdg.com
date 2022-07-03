@@ -15,6 +15,7 @@ class ProductController extends BaseController {
     public function initProducts() {
         $db = Database::connect();
         $req = Services::request();
+        $title = (string) strtolower($req->getVar("title")) ?: "";
         $page = (int) $req->getVar("page") ?: 1;
         $limit = (int) $req->getVar("limit") ?: 10;
         $offset = ($page - 1) * $limit;
@@ -35,7 +36,9 @@ class ProductController extends BaseController {
             ON p.uid = pf.product_uid 
             INNER JOIN product_types pt
             ON pf.type = pt.id 
+            WHERE p.title LIKE '%$title%'
             GROUP BY p.uid
+            ORDER BY p.id DESC
             LIMIT $offset, $limit");
             $products = $queryProducts->getResult();
 
@@ -61,8 +64,8 @@ class ProductController extends BaseController {
     
                 $data[] = $nestedData;
             }
-            
-            $hasNext = $nextPage == $perPage ? true : false;
+    
+            $hasNext = ceil(count($products) / $nextPage) - 1 != 0 ? true : false;
                         
             return $this->respond([
                 "code" => 200,
