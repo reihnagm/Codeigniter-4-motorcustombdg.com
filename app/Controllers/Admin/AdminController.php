@@ -2,10 +2,12 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Base\BaseController;
-use CodeIgniter\API\ResponseTrait;
+
 use Config\Services;
 use Config\Database;
+
+use App\Controllers\Base\BaseController;
+use CodeIgniter\API\ResponseTrait;
 use GuzzleHttp\Client;
 
 class AdminController extends BaseController
@@ -22,7 +24,6 @@ class AdminController extends BaseController
     }
 
     public function products() {
-        
         return view('admin/products/index');
     }
 
@@ -175,6 +176,21 @@ class AdminController extends BaseController
             VALUES('$productUid', '".$db->escapeString($title)."', '".$db->escapeString($description)."', '$useruid', '$slug')");
 
             for ($i = 0; $i < $filesCount; $i++) {  
+                // $image_info = getimagesize($_FILES["file-".$i]["tmp_name"]);
+                // $width = (int) $image_info[0];
+                // $height = (int) $image_info[1];
+
+                //if($width != 1080 && $height != 1080 
+                //&& $width != 1920 && $height != 1080 
+                //&& $width != 1080 && $height != 1920 
+                //&& $width != 1080 && $height != 1350 
+                //&& $width != 1080 && $height != 608) {
+                    //return $this->respond([
+                        //"error" => true,
+                        //"code" => 500,
+                       // "message" => "Image Dimensions is invalid",
+                    //], 500);
+                //}
                 $filename = $_FILES["file-".$i]["name"];
                 $path = $filename;
                 $type = "";
@@ -236,6 +252,20 @@ class AdminController extends BaseController
 
             for ($i = 0; $i < $filesCount; $i++) { 
                 if(isset($_FILES["filesUpdate-".$i])) {
+                    // $image_info = getimagesize($_FILES["filesUpdate-".$i]["tmp_name"]);
+                    // $width = (int) $image_info[0];
+                    // $height = (int) $image_info[1];
+                    // if($width != 1080 && $height != 1080 
+                    // && $width != 1920 && $height != 1080 
+                    // && $width != 1080 && $height != 1920 
+                    // && $width != 1080 && $height != 1350 
+                    // && $width != 1080 && $height != 608) {
+                    //     return $this->respond([
+                    //         "error" => true,
+                    //         "code" => 500,
+                    //         "message" => "Image Dimensions is invalid",
+                    //     ], 500);
+                    // }
                     $uid = $request->getPost("filesUpdateUid-".$i); 
                     $filename = $_FILES["filesUpdate-".$i]["name"];
                     $path = $filename;
@@ -272,7 +302,8 @@ class AdminController extends BaseController
             $title = $request->getPost("title");
             $description = $request->getPost("description");
             
-            $db->query("UPDATE products SET title = '".$db->escapeString($title)."', description = '".$db->escapeString($description)."'");
+            $db->query("UPDATE products SET title = '".$db->escapeString($title)."', description = '".$db->escapeString($description)."' 
+            WHERE uid = '$productUid'");
 
             $db->transComplete();
 

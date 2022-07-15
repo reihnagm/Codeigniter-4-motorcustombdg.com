@@ -20,10 +20,7 @@ class ProductController extends BaseController {
         $limit = (int) $req->getVar("limit") ?: 10;
         $offset = ($page - 1) * $limit;
         try {
-            $resultCountProducts = $db->query("SELECT * FROM products p 
-            INNER JOIN users u 
-            ON u.uid = p.user_uid INNER JOIN product_files pf ON p.uid = pf.product_uid 
-            GROUP BY p.uid");
+            $resultCountProducts = $db->query("SELECT * FROM products");
             $resultTotal = $limit > 10 ? ceil(count($resultCountProducts->getResult()) / $limit) : count($resultCountProducts->getResult());
             $perPage = ceil($resultTotal / $limit);
             $prevPage = $page === 1 ? 1 : $page - 1;
@@ -41,6 +38,10 @@ class ProductController extends BaseController {
             ORDER BY p.id DESC
             LIMIT $offset, $limit");
             $products = $queryProducts->getResult();
+
+            $checkNextPageProductExist = $page * 10;
+
+            $isHaveProducts = $db->query("SELECT * FROM products LIMIT $checkNextPageProductExist, $limit");
 
             $data = [];
 
@@ -65,7 +66,7 @@ class ProductController extends BaseController {
                 $data[] = $nestedData;
             }
     
-            $hasNext = ceil(count($products) / $nextPage) - 1 != 0 ? true : false;
+            $hasNext = count($isHaveProducts->getResult()) ? true : false;
                         
             return $this->respond([
                 "code" => 200,

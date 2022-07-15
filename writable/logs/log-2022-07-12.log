@@ -1,0 +1,78 @@
+CRITICAL - 2022-07-12 23:12:20 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:12:55 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:13:03 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:13:26 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:14:13 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:18:07 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:19:28 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:21:01 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:22:47 --> Invalid argument supplied for foreach()
+in APPPATH/Controllers/Admin/AdminController.php on line 136.
+ 1 APPPATH/Controllers/Admin/AdminController.php(136): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argument supplied for foreach()', 'APPPATH/Controllers/Admin/AdminController.php', 136, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->filesDelete('bratcafe-yamaha-byson-2012-100-fresh-build-by-motorcustombdg')
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:22:47 --> Argument 1 passed to CodeIgniter\Database\MySQLi\Connection::_escapeString() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/system/Database/BaseConnection.php on line 1260
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 329.
+ 1 SYSTEMPATH/Database/BaseConnection.php(1260): CodeIgniter\Database\MySQLi\Connection->_escapeString(null)
+ 2 APPPATH/Controllers/Admin/AdminController.php(305): CodeIgniter\Database\BaseConnection->escapeString(null)
+ 3 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->update('bratcafe-yamaha-byson-2012-100-fresh-build-by-motorcustombdg')
+ 4 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 5 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-07-12 23:25:58 --> Argument 1 passed to url_title() must be of the type string, null given, called in /Applications/MAMP/htdocs/motorcustombdg.com/app/Controllers/Admin/AdminController.php on line 170
+in SYSTEMPATH/Helpers/url_helper.php on line 475.
+ 1 APPPATH/Controllers/Admin/AdminController.php(170): url_title(null, '-', true)
+ 2 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\Admin\AdminController->store()
+ 3 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\AdminController))
+ 4 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()

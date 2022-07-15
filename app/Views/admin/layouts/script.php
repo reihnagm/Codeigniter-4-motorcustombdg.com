@@ -47,12 +47,14 @@
                         containerCarouselInner.append(`
                             <div class="carousel-item ${i == 0 ? "active" : ""}">
                                 <img class="d-block" style="width: 50%; margin: auto;" src='${baseUrl}/${data.files[key].url}' alt='${baseUrl}/${data.files[key].url}'>
+                                <a style='position: absolute; z-index: 99999; top: 12px; right: 20px;' href='${baseUrl}/${data.files[key].url}' download="proposed_file_name">Download</a>
                             </div>
                         `) 
                     } else {
                         containerCarouselInner.append(`
                             <div class="carousel-item ${i == 0 ? "active" : ""}">
                                 <video class="d-block" src='${baseUrl}/${data.files[key].url}' style="width: 50%; margin: auto;" controls> </video>
+                                <a href='${baseUrl}/${data.files[key].url}' download="proposed_file_name">Download</a>
                             </div>
                         `) 
                     }
@@ -68,9 +70,9 @@
 
     function removePreview(e, i) {
         $(`#form-preview-files-${i}`).trigger("reset")
-        $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
+        $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/1080x1080")
         $(`#preview-video-${i}`).replaceWith(`
-            <img id="preview-image-${i}" src="https://via.placeholder.com/140" width="140">
+            <img id="preview-image-${i}" src="https://via.placeholder.com/1080x1080" width="140">
         `)
         $(e).css("display", "none")
     }
@@ -81,11 +83,11 @@
 
         var size = e.files[0].size / 1024 / 1024;
 
-        if(size > 10) {
-            $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/140")
+        if(size > 100) {
+            $(`#preview-image-${i}`).attr("src", "https://via.placeholder.com/1080x1080")
             Swal.fire({
                 icon: 'info',
-                title: `<h6>File size exceeds 10 MB</h6>`,
+                title: `<h6>File size exceeds 100 MB</h6>`,
                 text: '',
                 showConfirmButton: true,
             })
@@ -206,11 +208,11 @@
 
                 var size = e.target.files[0].size / 1024 / 1024;
 
-                if(size > 10) {
-                    $(`#preview-image-edit-${i}`).attr("src", "https://via.placeholder.com/140")
+                if(size > 100) {
+                    $(`#preview-image-edit-${i}`).attr("src", "https://via.placeholder.com/1080x1080")
                     Swal.fire({
                         icon: 'info',
-                        title: `<h6>File size exceeds 10 MB</h6>`,
+                        title: `<h6>File size exceeds 100 MB</h6>`,
                         text: '',
                         showConfirmButton: true,
                     })
@@ -258,8 +260,8 @@
                 var filesEdit = JSON.parse($("#files-edit").val())
                 $("#files-edit").val(JSON.stringify(filesEdit.filter(el => el.uid !== $(`#product-files-edit-${i}`)[0].dataset.uid)))
                 $(`#form-preview-files-edit-${i}`).trigger("reset")
-                $(`#preview-image-edit-${i}`).attr("src", "https://via.placeholder.com/140")
-                $(`#preview-video-edit-${i}`).replaceWith(`<img id="preview-image-edit-${i}" src="https://via.placeholder.com/140" width="140">`)
+                $(`#preview-image-edit-${i}`).attr("src", "https://via.placeholder.com/1080x1080")
+                $(`#preview-video-edit-${i}`).replaceWith(`<img id="preview-image-edit-${i}" src="https://via.placeholder.com/1080x1080" width="140">`)
                 $(e.target).css("display", "none")
             },
             updateProduct(e) {
@@ -342,14 +344,24 @@
                         })
                         location.reload()
                     },
-                    error: function(data) {
+                    error: function(xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")")
+                        if(typeof err != "undefined") {
+                            Swal.fire({
+                                icon: 'info',
+                                title: `<h6>${err.message}</h6>`,
+                                text: '',
+                                showConfirmButton: true,
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: `<h6>There was problem</h6>`,
+                                text: '',
+                                showConfirmButton: true,
+                            })
+                        }
                         $(e.target).text("Submit")
-                        Swal.fire({
-                            icon: 'info',
-                            title: `<h6>There was problem!</h6>`,
-                            text: '',
-                            showConfirmButton: true,
-                        })
                     }
                 })
             },
@@ -373,7 +385,7 @@
                                     <form id="form-preview-files-edit-${i}" style="margin: 0px 4px 0px 4px;">
                                         <label class="product-files-label" for="product-files-edit-${i}">
                                             <div id="wrapper-product-files">
-                                                <img id="preview-image-edit-${i}" src="https://via.placeholder.com/140" width="140">
+                                                <img id="preview-image-edit-${i}" src="https://via.placeholder.com/1080x1080" width="140">
                                                 <div class="products-files-remove" id="product-files-remove-edit-${i}"> </div>
                                             </div>
                                         </label>
@@ -475,6 +487,7 @@
             
             $(document).on("click", "#btn-create-a-product", function(e) {
                 e.preventDefault()
+                
                 var title = $("#title").val()
                 if(title.trim() == "") {
                     $("#title").focus()
@@ -529,6 +542,7 @@
                 for (var i = 0; i < files.length; i++) {
                     fd.append(`file-${i}`, files[i][0])
                 }
+          
                 $(this).text("...")
                 $.ajax({
                     url: `<?= base_url() ?>/admin/products/store`,
@@ -545,15 +559,25 @@
                         })
                         $(".bd-create-products-modal-lg").modal("toggle")
                         $("#btn-create-a-product").text("Submit")
-                        location.reload()
+                        // location.reload()
                     },
-                    error: function(data) {
-                        Swal.fire({
-                            icon: 'info',
-                            title: `<h6>There was problem</h6>`,
-                            text: '',
-                            showConfirmButton: true,
-                        })
+                    error: function(xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")")
+                        if(typeof err != "undefined") {
+                            Swal.fire({
+                                icon: 'info',
+                                title: `<h6>${err.message}</h6>`,
+                                text: '',
+                                showConfirmButton: true,
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'info',
+                                title: `<h6>There was problem</h6>`,
+                                text: '',
+                                showConfirmButton: true,
+                            })
+                        }
                         $(".bd-create-products-modal-lg").modal("toggle")
                         $("#btn-create-a-product").text("Submit")
                     }

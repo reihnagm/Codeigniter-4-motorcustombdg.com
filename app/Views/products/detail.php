@@ -19,12 +19,20 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/detail.css">
+
+    <style>
+        @media only screen and (max-width: 768px) {
+            .auth-menu {
+                display: none !important; 
+            }
+        }
+    </style>
 </head>
 <body>
 
     <?= view('layouts/nav') ?>
 
-    <div class="content-body">
+    <div class="content-body my-5">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -37,18 +45,18 @@
                                             <?php if($files[0]["type"] == "image") { ?>
                                                 <img class="img-fluid" src="<?= base_url() .'/'. $files[0]['url'] ?>">
                                             <?php } else { ?>
-                                                <video src="<?= base_url() .'/'. $files[0]['url'] ?>" controls></video>
+                                                <video id="display-video" src="<?= base_url() .'/'. $files[0]['url'] ?>" controls></video>
                                             <?php } ?>
                                         </div>
                                         <?php $i = 0; ?>
                                         <?php foreach($files as $file) : ?>
                                             <?php if($file["type"] == "image") { ?>
                                                 <div role="tabpanel" class="tab-pane fade" id="items<?=$i++?>">
-                                                    <img class="img-fluid" src="<?=  base_url() .'/'. $file['url'] ?>">
+                                                    <img class="img-fluid" src="<?= base_url() .'/'. $file['url'] ?>">
                                                 </div>
                                             <?php } else { ?>
                                                 <div role="tabpanel" class="tab-pane fade" id="items<?=$i++?>">
-                                                    <video src="<?= base_url() .'/'. $file['url'] ?>" controls></video>
+                                                    <video id="display-video" src="<?= base_url() .'/'. $file['url'] ?>" controls></video>
                                                 </div>
                                             <?php } ?>
                                         <?php endforeach ?>
@@ -96,6 +104,16 @@
 
     <script src="<?= base_url() ?>/public/assets/vendor/global/global.min.js"></script>
     <script src="<?= base_url() ?>/public/assets/js/custom.min.js"></script>
+
+    <script>
+        var mainListDiv = document.getElementById("mainListDiv")
+        mediaButton = document.getElementById('mediaButton')
+
+        mediaButton.onclick = function() {
+            mainListDiv.classList.toggle('show_list')
+            mediaButton.classList.toggle('active')
+        }
+    </script>
 
 </body>
 </html>

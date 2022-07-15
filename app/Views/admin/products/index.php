@@ -26,13 +26,13 @@
             <textarea class="form-control" id="description"></textarea>
           </div>
           <div class="form-group">
-            <label for="max-upload">Min upload 2 Images & Videos (10 MB):</label>
+            <label for="max-upload">Min upload 2 Images & Videos (10 MB) - (1080×1080 & 1920×1080) :</label>
             <div style="margin: 10px 0px; display: flex;">
               <?php for($i = 0; $i < 5; $i++): ?> 
                 <form id="form-preview-files-<?= $i ?>" style="margin: 0px 4px 0px 4px;">
                   <label class="product-files-label" for="product-files-<?= $i ?>">
                     <div id="wrapper-product-files">
-                      <img id="preview-image-<?= $i ?>" src="https://via.placeholder.com/140" width="140">
+                      <img id="preview-image-<?= $i ?>" src="https://via.placeholder.com/1080x1080" width="140">
                       <div class="products-files-remove" id="product-files-remove-<?= $i ?>"></div>
                     </div>
                   </label>
@@ -76,7 +76,7 @@
               <textarea class="form-control" id="description-edit"></textarea>
             </div>
             <div class="form-group">
-              <label for="max-upload">Min upload 2 Images & Videos (10 MB):</label>
+              <label for="max-upload">Min upload 2 Images & Videos (10 MB) - (1080×1080 & 1920×1080) :</label>
               <div class="wrapper-preview-files-edited" style="margin: 10px 0px; display: flex;"></div>
             </div>
           </form>
@@ -99,18 +99,18 @@
           <h5 class="modal-title" id="exampleModalLabel">Show File</h5>
         </div>
         <div class="modal-body show-file">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators show-carousel-indicators-file-wrapper">
 
             </ol>
             <div class="carousel-inner show-carousel-inner-file-wrapper">
               
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>

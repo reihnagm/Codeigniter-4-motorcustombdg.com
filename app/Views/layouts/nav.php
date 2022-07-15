@@ -7,7 +7,9 @@
     <div class="container">
         <div class="d-flex justify-content-between">
             <div class="logo-nav">
-                <img src="<?= base_url() ?>/public/assets/imagesv2/logo.png" width="80" alt="motorcustombdg logo">
+                <a href="<?= base_url() ?>">
+                    <img src="<?= base_url() ?>/public/assets/imagesv2/logo.png" width="80" alt="motorcustombdg logo">
+                </a>
             </div>
             <div class="menu">
                 <div class="main_list" id="mainListDiv">

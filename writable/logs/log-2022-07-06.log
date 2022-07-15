@@ -1,0 +1,121 @@
+ERROR - 2022-07-06 19:13:56 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '- 1, 10' at line 1
+CRITICAL - 2022-07-06 19:13:56 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '- 1, 10' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT * FROM products LIMIT 2 - 1, 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM products LIMIT 2 - 1, 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM products LIMIT 2 - 1, 10')
+ 4 APPPATH/Controllers/ProductController.php(42): CodeIgniter\Database\BaseConnection->query('SELECT * FROM products LIMIT 2 - 1, 10')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-06 19:21:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 12
+CRITICAL - 2022-07-06 19:21:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 12
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10')
+ 4 APPPATH/Controllers/ProductController.php(39): CodeIgniter\Database\BaseConnection->query('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-07-06 19:21:52 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 12
+CRITICAL - 2022-07-06 19:21:52 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 12
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(695): CodeIgniter\Database\MySQLi\Connection->execute('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(609): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10')
+ 4 APPPATH/Controllers/ProductController.php(39): CodeIgniter\Database\BaseConnection->query('SELECT p.uid, p.slug, p.title, p.description, u.username, GROUP_CONCAT(pf.url) AS files, GROUP_CONCAT(pt.name) AS types
+            FROM products p 
+            INNER JOIN users u 
+            ON u.uid = p.user_uid 
+            INNER JOIN product_files pf 
+            ON p.uid = pf.product_uid 
+            INNER JOIN product_types pt
+            ON pf.type = pt.id 
+            WHERE p.title LIKE \'%%\'
+            GROUP BY p.uid
+            ORDER BY p.id DESC
+            LIMIT -10, 10')
+ 5 SYSTEMPATH/CodeIgniter.php(896): App\Controllers\ProductController->initProducts()
+ 6 SYSTEMPATH/CodeIgniter.php(466): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH/CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(55): CodeIgniter\CodeIgniter->run()
